@@ -22,6 +22,11 @@ import {
 
 import AiAutofillButton from "./AiAutoFillButton";
 
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createJobAction } from "@/utils/actions";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+
 const CreateJobForm = () => {
   const form = useForm<createAndEditJobType>({
     resolver: zodResolver(createAndEditJobSchema),
@@ -33,6 +38,25 @@ const CreateJobForm = () => {
       location: "",
       mode: JobMode.FullTime,
       jobUrl: "",
+    },
+  });
+
+  const queryClient = useQueryClient();
+  const router = useRouter();
+  const { mutate, isPending } = useMutation({
+    mutationFn: (values: createAndEditJobType) => createJobAction(values),
+    onSuccess: (data) => {
+      if (!data) {
+        toast("There was an error");
+        return;
+      }
+      toast("Job created");
+      queryClient.invalidateQueries({ queryKey: ["jobs"] });
+      queryClient.invalidateQueries({ queryKey: ["stats"] });
+      queryClient.invalidateQueries({ queryKey: ["charts"] });
+
+      router.push("/jobs");
+      // form.reset();
     },
   });
 
@@ -49,7 +73,7 @@ const CreateJobForm = () => {
   };
 
   const onSubmit = (values: createAndEditJobType) => {
-    console.log(values);
+    mutate(values);
   };
 
   return (
@@ -70,7 +94,6 @@ const CreateJobForm = () => {
           <CustomFormField name="company" control={form.control} />
           {/* Location */}
           <CustomFormField name="location" control={form.control} />
-
           {/* job status */}
           <CustomFormSelect
             name="status"
@@ -85,20 +108,22 @@ const CreateJobForm = () => {
             labelText="job mode"
             items={Object.values(JobMode)}
           />
-
           {/* Date applied */}
           <CustomFormDate
             name="dateApplied"
             control={form.control}
             labelText="date applied"
           />
-
           {/* job url optional */}
           <CustomFormField name="jobUrl" control={form.control} />
-
-          <Button type="submit" className="self-end capitalize">
-            Create job
+          <Button
+            type="submit"
+            className="self-end capitalize"
+            disabled={isPending}
+          >
+            {isPending ? "loading..." : "create job"}
           </Button>
+          ;
         </div>
       </form>
     </Form>
