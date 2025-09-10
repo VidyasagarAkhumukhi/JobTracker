@@ -1,6 +1,5 @@
 # Jobify
 
-<<<<<<< HEAD
 ## Create New Next.js Project
 
 ```sh
@@ -3218,6 +3217,7 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
 }
 export default ButtonContainer;
 ```
-=======
+
+JobTrackerAI
+
 working on add jobs page
->>>>>>> c768fb9605724b716bf56d9cf2cd404e75d36cdb

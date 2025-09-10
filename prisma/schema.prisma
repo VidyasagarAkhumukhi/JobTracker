@@ -30,15 +30,15 @@ enum JobMode {
 }
 
 model Job {
-  id          String    @id @default(cuid())
+  id          String    @id @default(uuid())
   clerkId     String
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   jobTitle    String
   company     String
   location    String
-  status      JobStatus @default(Pending)
-  mode        JobMode   @default(FullTime)
+  status      JobStatus
+  mode        JobMode
   dateApplied DateTime
   jobUrl      String?
 }

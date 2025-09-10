@@ -16,16 +16,16 @@ export type JobType = {
 
 export enum JobStatus {
   Pending = "Pending",
-  Applied = "Applied", //additional
-  Interview = "Interviewing",
-  Offer = "Offer", //additional
-  Declined = "Declined", //additional
+  Applied = "Applied",
+  Interviewing = "Interviewing",
+  Offer = "Offer",
+  Declined = "Declined",
   Rejected = "Rejected",
 }
 
 export enum JobMode {
-  FullTime = "Full-time",
-  PartTime = "Part-time",
+  FullTime = "FullTime",
+  PartTime = "PartTime",
   Internship = "Internship",
 }
 
