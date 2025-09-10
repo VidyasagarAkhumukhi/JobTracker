@@ -14,31 +14,16 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-enum JobStatus {
-  Pending
-  Applied
-  Interviewing
-  Offer
-  Declined
-  Rejected
-}
-
-enum JobMode {
-  FullTime
-  PartTime
-  Internship
-}
-
 model Job {
-  id          String    @id @default(uuid())
+  id          String   @id @default(uuid())
   clerkId     String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   jobTitle    String
   company     String
   location    String
-  status      JobStatus
-  mode        JobMode
+  status      String
+  mode        String
   dateApplied DateTime
   jobUrl      String?
 }
