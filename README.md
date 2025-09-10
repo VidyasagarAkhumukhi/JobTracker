@@ -1,3 +1,3 @@
 JobTrackerAI
 
-Added light and dark theme options
+working on add jobs page
