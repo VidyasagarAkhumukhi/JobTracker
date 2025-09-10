@@ -1,1 +1,1 @@
-Working on searching jobs 
+Job card and All jobs list created with search function
