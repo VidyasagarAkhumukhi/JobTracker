@@ -11,7 +11,7 @@ export type JobType = {
   status: string;
   dateApplied: Date; //additional
   mode: string;
-  jobUrl?: string; //additional //optional
+  jobUrl: string | null; //additional //changed from optional to nullable
 };
 
 export enum JobStatus {
@@ -42,7 +42,7 @@ export const createAndEditJobSchema = z.object({
   status: z.nativeEnum(JobStatus),
   mode: z.nativeEnum(JobMode),
   dateApplied: z.date(),
-  jobUrl: z.string().url().optional().or(z.literal("")),
+  jobUrl: z.string().url().nullable().optional().or(z.literal("")),
 });
 
 export type createAndEditJobType = z.infer<typeof createAndEditJobSchema>;

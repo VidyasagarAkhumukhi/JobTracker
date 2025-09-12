@@ -34,13 +34,7 @@ export const createJobAction = async (
       },
     });
 
-    // Convert Prisma result to JobType (null to undefined conversion)
-    const convertedJob: JobType = {
-      ...job,
-      jobUrl: job.jobUrl ?? undefined,
-    };
-
-    return convertedJob;
+    return job;
   } catch (error) {
     console.error(error);
     return null;
@@ -79,11 +73,13 @@ export const getAllJobsAction = async ({
             jobTitle: {
               //position
               contains: search,
+              mode: "insensitive",
             },
           },
           {
             company: {
               contains: search,
+              mode: "insensitive",
             },
           },
         ],
@@ -103,13 +99,7 @@ export const getAllJobsAction = async ({
       },
     });
 
-    // Convert Prisma results to JobType (null to undefined conversion)
-    const convertedJobs: JobType[] = jobs.map((job) => ({
-      ...job,
-      jobUrl: job.jobUrl ?? undefined,
-    }));
-
-    return { jobs: convertedJobs, count: 0, page: 1, totalPages: 0 };
+    return { jobs, count: 0, page: 1, totalPages: 0 };
   } catch (error) {
     console.error(error);
     return { jobs: [], count: 0, page: 1, totalPages: 0 };
@@ -117,7 +107,7 @@ export const getAllJobsAction = async ({
 };
 
 // deleting job
-export async function deleteJobAction(id: string): Promise<JobType | null> {
+export const deleteJobAction = async (id: string): Promise<JobType | null> => {
   const userId = await authenticateAndRedirect();
 
   try {
@@ -128,14 +118,52 @@ export async function deleteJobAction(id: string): Promise<JobType | null> {
       },
     });
 
-    // Convert Prisma result to JobType (null to undefined conversion)
-    const convertedJob: JobType = {
-      ...job,
-      jobUrl: job.jobUrl ?? undefined,
-    };
-
-    return convertedJob;
+    return job;
   } catch (error) {
     return null;
   }
-}
+};
+
+export const getSingleJobAction = async (
+  id: string
+): Promise<JobType | null> => {
+  let job: JobType | null = null;
+  const userId = await authenticateAndRedirect();
+
+  try {
+    job = await prisma.job.findUnique({
+      where: {
+        id,
+        clerkId: userId,
+      },
+    });
+  } catch (error) {
+    job = null;
+  }
+  if (!job) {
+    redirect("/jobs");
+  }
+  return job;
+};
+
+export const updateJobAction = async (
+  id: string,
+  values: createAndEditJobType
+): Promise<JobType | null> => {
+  const userId = await authenticateAndRedirect();
+
+  try {
+    const job: JobType = await prisma.job.update({
+      where: {
+        id,
+        clerkId: userId,
+      },
+      data: {
+        ...values,
+      },
+    });
+    return job;
+  } catch (error) {
+    return null;
+  }
+};
