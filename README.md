@@ -1,1 +1,1 @@
-Job card and All jobs list created with search function
+Added job delete functionality in job card

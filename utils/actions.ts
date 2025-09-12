@@ -33,7 +33,14 @@ export const createJobAction = async (
         clerkId: userId,
       },
     });
-    return job as JobType;
+
+    // Convert Prisma result to JobType (null to undefined conversion)
+    const convertedJob: JobType = {
+      ...job,
+      jobUrl: job.jobUrl ?? undefined,
+    };
+
+    return convertedJob;
   } catch (error) {
     console.error(error);
     return null;
@@ -97,9 +104,9 @@ export const getAllJobsAction = async ({
     });
 
     // Convert Prisma results to JobType (null to undefined conversion)
-    const convertedJobs: JobType[] = jobs.map(job => ({
+    const convertedJobs: JobType[] = jobs.map((job) => ({
       ...job,
-      jobUrl: job.jobUrl ?? undefined
+      jobUrl: job.jobUrl ?? undefined,
     }));
 
     return { jobs: convertedJobs, count: 0, page: 1, totalPages: 0 };
@@ -109,4 +116,26 @@ export const getAllJobsAction = async ({
   }
 };
 
+// deleting job
+export async function deleteJobAction(id: string): Promise<JobType | null> {
+  const userId = await authenticateAndRedirect();
 
+  try {
+    const job = await prisma.job.delete({
+      where: {
+        id,
+        clerkId: userId,
+      },
+    });
+
+    // Convert Prisma result to JobType (null to undefined conversion)
+    const convertedJob: JobType = {
+      ...job,
+      jobUrl: job.jobUrl ?? undefined,
+    };
+
+    return convertedJob;
+  } catch (error) {
+    return null;
+  }
+}

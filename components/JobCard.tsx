@@ -15,7 +15,7 @@ import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import JobInfo from "./JobInfo";
-// import DeleteJobButton from "./DeleteJobButton";
+import DeleteJobBtn from "./DeleteJobBtn";
 
 function JobCard({ job }: { job: JobType }) {
   const date = new Date(job.dateApplied).toLocaleDateString();
@@ -39,9 +39,9 @@ function JobCard({ job }: { job: JobType }) {
       </CardContent>
       <CardFooter className="flex gap-4">
         <Button asChild size="sm">
-          <Link href={`/jobs/${job.id}`}>edit</Link>
+          <Link href={`/jobs/${job.id}`}>Edit</Link>
         </Button>
-        {/* <DeleteJobButton /> */}
+        <DeleteJobBtn id={job.id} />
       </CardFooter>
     </Card>
   );
