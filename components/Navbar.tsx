@@ -2,7 +2,6 @@ import React from "react";
 import LinksDropdown from "./LinksDropdown";
 import { UserButton } from "@clerk/nextjs";
 import ThemeToggle from "./ThemeToggle";
-import Link from "next/link";
 
 const Navbar = () => {
   return (
