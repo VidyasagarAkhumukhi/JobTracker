@@ -131,8 +131,12 @@ const AiAutofillButton = ({ onAutofill }: AiAutofillButtonProps) => {
           "Failed to parse the job description. The API returned an empty response."
         );
       }
-    } catch (err: any) {
-      setAutofillError(err.message || "An unknown error occurred.");
+    } catch (err) {
+      if (err instanceof Error) {
+        setAutofillError(err.message);
+      } else {
+        setAutofillError("An unknown error occurred.");
+      }
     } finally {
       setIsAutofilling(false);
     }
