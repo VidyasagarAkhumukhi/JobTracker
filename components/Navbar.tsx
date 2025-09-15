@@ -2,6 +2,7 @@
 import React from "react";
 import LinksDropdown from "./LinksDropdown";
 import QuickLinksDropdown from "./QuickLinksDropdown";
+import AIFeaturesModal from "./AIFeaturesModal";
 import { UserButton } from "@clerk/nextjs";
 import ThemeToggle from "./ThemeToggle";
 import { usePathname } from "next/navigation";
@@ -81,12 +82,14 @@ const Navbar = () => {
 
         {/* Right section - Theme toggle and user */}
         <div className="flex items-center gap-3">
-          <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-lg border border-primary/20">
-            <div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
-            <span className="text-xs font-medium bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">
-              ✨ AI Magic Mode
-            </span>
-          </div>
+          <AIFeaturesModal>
+            <button className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-lg border border-primary/20 hover:from-primary/20 hover:to-purple-500/20 hover:border-primary/30 transition-all duration-200 cursor-pointer group">
+              <div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
+              <span className="text-xs font-medium bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent group-hover:scale-105 transition-transform">
+                ✨ AI Magic Mode
+              </span>
+            </button>
+          </AIFeaturesModal>
 
           <QuickLinksDropdown />
 
