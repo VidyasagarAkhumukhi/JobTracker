@@ -58,39 +58,65 @@ const SearchContainer = () => {
 
   return (
     <form
-      className="bg-muted mb-16 p-8 grid sm:grid-cols-2 md:grid-cols-3  gap-4 rounded-lg"
+      className="grid sm:grid-cols-2 md:grid-cols-3 gap-4"
       onSubmit={handleSubmit}
     >
-      <Input
-        type="text"
-        placeholder="Search Jobs"
-        name="search"
-        defaultValue={search}
-        className="bg-white"
-      />
-      <Select defaultValue={jobStatus} name="jobStatus">
-        <SelectTrigger
-          className={`${getStatusStyle(
-            jobStatus
-          )} w-full justify-start capitalize`}
+      <div className="space-y-2">
+        <label htmlFor="search" className="text-sm font-medium text-foreground">
+          Search Jobs
+        </label>
+        <Input
+          id="search"
+          type="text"
+          placeholder="Search by job title, company..."
+          name="search"
+          defaultValue={search}
+          className="bg-background border-input focus:border-primary"
+        />
+      </div>
+
+      <div className="space-y-2">
+        <label
+          htmlFor="jobStatus"
+          className="text-sm font-medium text-foreground"
         >
-          <SelectValue />
-        </SelectTrigger>
-        <SelectContent>
-          {["all", ...Object.values(JobStatus)].map((status) => {
-            return (
-              <SelectItem
-                key={status}
-                value={status}
-                className={`${getStatusStyle(status)} hover:opacity-80`}
-              >
-                {status}
-              </SelectItem>
-            );
-          })}
-        </SelectContent>
-      </Select>
-      <Button type="submit">Search</Button>
+          Filter by Status
+        </label>
+        <Select defaultValue={jobStatus} name="jobStatus">
+          <SelectTrigger
+            id="jobStatus"
+            className={`${getStatusStyle(
+              jobStatus
+            )} w-full justify-start capitalize border-input focus:border-primary`}
+          >
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {["all", ...Object.values(JobStatus)].map((status) => {
+              return (
+                <SelectItem
+                  key={status}
+                  value={status}
+                  className={`${getStatusStyle(
+                    status
+                  )} hover:opacity-80 capitalize`}
+                >
+                  {status}
+                </SelectItem>
+              );
+            })}
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div className="space-y-2">
+        <label className="text-sm font-medium text-foreground opacity-0">
+          Search
+        </label>
+        <Button type="submit" className="w-full h-10">
+          Search Jobs
+        </Button>
+      </div>
     </form>
   );
 };

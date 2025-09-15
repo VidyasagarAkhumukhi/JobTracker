@@ -26,6 +26,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createJobAction } from "@/utils/actions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { Plus } from "lucide-react";
 
 const CreateJobForm = () => {
   const form = useForm<createAndEditJobType>({
@@ -77,55 +78,109 @@ const CreateJobForm = () => {
   };
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="bg-muted p-8 rounded"
-      >
-        <h2 className="capitalize font-semibold text-4xl mb-6">add job</h2>
+    <div className="max-w-4xl mx-auto">
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="bg-card border shadow-sm p-8 rounded-xl space-y-8"
+        >
+          {/* Form Header */}
+          <div className="border-b pb-6">
+            <h2 className="text-2xl font-bold text-foreground mb-2">
+              Job Application Details
+            </h2>
+            <p className="text-muted-foreground">
+              Fill in the job information below or use AI auto-fill to populate
+              fields automatically.
+            </p>
+          </div>
 
-        {/* --- USE THE NEW COMPONENT HERE --- */}
-        <AiAutofillButton onAutofill={handleAutofillData} />
+          {/* AI Auto-fill Section */}
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
+              <span className="text-primary">🤖</span>
+              AI-Powered Auto-Fill
+            </h3>
+            <AiAutofillButton onAutofill={handleAutofillData} />
+          </div>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-start">
-          {/* position */}
-          <CustomFormField name="jobTitle" control={form.control} />
-          {/* Company */}
-          <CustomFormField name="company" control={form.control} />
-          {/* Location */}
-          <CustomFormField name="location" control={form.control} />
-          {/* job status */}
-          <CustomFormSelect
-            name="status"
-            control={form.control}
-            labelText="job status"
-            items={Object.values(JobStatus)}
-          />
-          {/* job  type */}
-          <CustomFormSelect
-            name="mode"
-            control={form.control}
-            labelText="job mode"
-            items={Object.values(JobMode)}
-          />
-          {/* Date applied */}
-          <CustomFormDate
-            name="dateApplied"
-            control={form.control}
-            labelText="date applied"
-          />
-          {/* job url optional */}
-          <CustomFormField name="jobUrl" control={form.control} />
-          <Button
-            type="submit"
-            className="self-end capitalize"
-            disabled={isPending}
-          >
-            {isPending ? "loading..." : "create job"}
-          </Button>
-        </div>
-      </form>
-    </Form>
+          {/* Form Fields */}
+          <div className="space-y-6">
+            <h3 className="text-lg font-semibold text-foreground border-b pb-2">
+              Application Information
+            </h3>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {/* Job Title */}
+              <div className="lg:col-span-1">
+                <CustomFormField name="jobTitle" control={form.control} />
+              </div>
+              {/* Company */}
+              <div className="lg:col-span-1">
+                <CustomFormField name="company" control={form.control} />
+              </div>
+              {/* Location */}
+              <div className="lg:col-span-1">
+                <CustomFormField name="location" control={form.control} />
+              </div>
+
+              {/* Job Status */}
+              <div className="lg:col-span-1">
+                <CustomFormSelect
+                  name="status"
+                  control={form.control}
+                  labelText="Application Status"
+                  items={Object.values(JobStatus)}
+                />
+              </div>
+              {/* Job Mode */}
+              <div className="lg:col-span-1">
+                <CustomFormSelect
+                  name="mode"
+                  control={form.control}
+                  labelText="Employment Type"
+                  items={Object.values(JobMode)}
+                />
+              </div>
+              {/* Date Applied */}
+              <div className="lg:col-span-1">
+                <CustomFormDate
+                  name="dateApplied"
+                  control={form.control}
+                  labelText="Date Applied"
+                />
+              </div>
+
+              {/* Job URL */}
+              <div className="lg:col-span-3">
+                <CustomFormField name="jobUrl" control={form.control} />
+              </div>
+            </div>
+          </div>
+
+          {/* Submit Button */}
+          <div className="flex justify-end pt-6 border-t">
+            <Button
+              type="submit"
+              className="px-8 py-2 text-lg font-medium"
+              disabled={isPending}
+              size="lg"
+            >
+              {isPending ? (
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                  Creating Application...
+                </div>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <Plus className="w-4 h-4" />
+                  Create Job Application
+                </div>
+              )}
+            </Button>
+          </div>
+        </form>
+      </Form>
+    </div>
   );
 };
 

@@ -1,26 +1,30 @@
-import { AreaChart, Layers, AppWindow } from "lucide-react";
+import { AreaChart, Briefcase, Plus, BarChart3 } from "lucide-react";
 
 type NavLink = {
   href: string;
   label: string;
   icon: React.ReactNode;
+  description?: string;
 };
 
 const links: NavLink[] = [
   {
     href: "/add-job",
     label: "add job",
-    icon: <Layers />,
+    icon: <Plus />,
+    description: "Create new job applications",
   },
   {
     href: "/jobs",
     label: "all jobs",
-    icon: <AppWindow />,
+    icon: <Briefcase />,
+    description: "View and manage applications",
   },
   {
     href: "/stats",
-    label: "stats",
-    icon: <AreaChart />,
+    label: "analytics",
+    icon: <BarChart3 />,
+    description: "Track your progress",
   },
 ];
 
