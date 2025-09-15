@@ -1,3 +1,1 @@
-Finished Edit job functionality and delete job
-Added color codes to job status. 
-Added Job Url in job card
+completed job stats page and stat chart, displaying the stats for applications

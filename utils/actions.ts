@@ -167,3 +167,91 @@ export const updateJobAction = async (
     return null;
   }
 };
+
+// Pending = "Pending",
+// Applied = "Applied",
+// Interviewing = "Interviewing",
+// Offer = "Offer",
+// Declined = "Declined",
+// Rejected = "Rejected",
+
+export const getStatsAction = async (): Promise<{
+  Pending: number;
+  Applied: number;
+  Interviewing: number;
+  Offer: number;
+  Declined: number;
+  Rejected: number;
+}> => {
+  const userId = await authenticateAndRedirect();
+  // to show Skeleton
+  await new Promise((resolve) => setTimeout(resolve, 5000));
+  try {
+    const stats = await prisma.job.groupBy({
+      by: ["status"],
+      _count: {
+        status: true,
+      },
+      where: {
+        clerkId: userId, // replace userId with the actual clerkId
+      },
+    });
+
+    const statsObject = stats.reduce((acc, curr) => {
+      acc[curr.status] = curr._count.status;
+      return acc;
+    }, {} as Record<string, number>);
+
+    const defaultStats = {
+      Pending: 0,
+      Applied: 0,
+      Interviewing: 0,
+      Offer: 0,
+      Declined: 0,
+      Rejected: 0,
+      ...statsObject,
+    };
+    return defaultStats;
+  } catch (error) {
+    redirect("/jobs");
+  }
+};
+
+export const getChartsDataAction = async (): Promise<
+  Array<{ date: string; count: number }>
+> => {
+  const userId = await authenticateAndRedirect();
+  const sixMonthsAgo = dayjs().subtract(6, "month").toDate();
+  try {
+    const jobs = await prisma.job.findMany({
+      where: {
+        clerkId: userId,
+        dateApplied: {
+          gte: sixMonthsAgo,
+        },
+      },
+      orderBy: {
+        dateApplied: "asc",
+      },
+    });
+    // console.log(jobs);
+
+    let applicationsPerMonth = jobs.reduce((acc, job) => {
+      const date = dayjs(job.dateApplied).format("MMM YY");
+
+      const existingEntry = acc.find((entry) => entry.date === date);
+
+      if (existingEntry) {
+        existingEntry.count += 1;
+      } else {
+        acc.push({ date, count: 1 });
+      }
+
+      return acc;
+    }, [] as Array<{ date: string; count: number }>);
+
+    return applicationsPerMonth;
+  } catch (error) {
+    redirect("/jobs");
+  }
+};

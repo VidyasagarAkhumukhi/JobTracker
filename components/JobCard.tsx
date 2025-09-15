@@ -25,24 +25,24 @@ import DeleteJobBtn from "./DeleteJobBtn";
 
 function JobCard({ job }: { job: JobType }) {
   const date = new Date(job.dateApplied).toLocaleDateString();
-  
+
   // Function to get status-specific styling
   const getStatusStyle = (status: string) => {
     switch (status.toLowerCase()) {
-      case 'pending':
-        return 'bg-yellow-100 text-yellow-800 border-yellow-300 hover:bg-yellow-200';
-      case 'applied':
-        return 'bg-blue-100 text-blue-800 border-blue-300 hover:bg-blue-200';
-      case 'interviewing':
-        return 'bg-purple-100 text-purple-800 border-purple-300 hover:bg-purple-200';
-      case 'offer':
-        return 'bg-green-100 text-green-800 border-green-300 hover:bg-green-200';
-      case 'declined':
-        return 'bg-orange-100 text-orange-800 border-orange-300 hover:bg-orange-200';
-      case 'rejected':
-        return 'bg-red-100 text-red-800 border-red-300 hover:bg-red-200';
+      case "pending":
+        return "bg-yellow-100 text-yellow-800 border-yellow-300 hover:bg-yellow-200";
+      case "applied":
+        return "bg-blue-100 text-blue-800 border-blue-300 hover:bg-blue-200";
+      case "interviewing":
+        return "bg-purple-100 text-purple-800 border-purple-300 hover:bg-purple-200";
+      case "offer":
+        return "bg-green-100 text-green-800 border-green-300 hover:bg-green-200";
+      case "declined":
+        return "bg-orange-100 text-orange-800 border-orange-300 hover:bg-orange-200";
+      case "rejected":
+        return "bg-red-100 text-red-800 border-red-300 hover:bg-red-200";
       default:
-        return 'bg-gray-100 text-gray-800 border-gray-300 hover:bg-gray-200';
+        return "bg-gray-100 text-gray-800 border-gray-300 hover:bg-gray-200";
     }
   };
 
@@ -68,7 +68,11 @@ function JobCard({ job }: { job: JobType }) {
         <JobInfo icon={<Briefcase />} text={job.mode} />
         <JobInfo icon={<MapPin />} text={job.location} />
         <JobInfo icon={<CalendarDays />} text={date} />
-        <Badge className={`w-32 justify-center ${getStatusStyle(job.status)}`}>
+        <Badge
+          className={`w-full max-w-32 justify-center ${getStatusStyle(
+            job.status
+          )}`}
+        >
           <JobInfo
             icon={<RadioTower className="w-4 h-4" />}
             text={job.status}

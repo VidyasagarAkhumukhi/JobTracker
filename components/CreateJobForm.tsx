@@ -123,7 +123,6 @@ const CreateJobForm = () => {
           >
             {isPending ? "loading..." : "create job"}
           </Button>
-          ;
         </div>
       </form>
     </Form>
