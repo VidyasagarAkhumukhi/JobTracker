@@ -15,8 +15,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "./ui/input";
-import { Value } from "@radix-ui/react-select";
-import { Item } from "@radix-ui/react-dropdown-menu";
 
 type CustomFormFieldProps = {
   name: string;
