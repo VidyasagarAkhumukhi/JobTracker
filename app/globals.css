@@ -122,3 +122,65 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom styles for JobTrackAI landing page */
+@layer utilities {
+  .bg-grid-slate-100 {
+    background-image: linear-gradient(rgba(148, 163, 184, 0.1) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(148, 163, 184, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  .shadow-3xl {
+    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #3b82f6);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 3s ease-in-out infinite;
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  .pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    }
+  }
+  
+  .backdrop-blur-soft {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
