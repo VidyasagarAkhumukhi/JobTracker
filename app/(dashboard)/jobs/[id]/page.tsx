@@ -6,8 +6,13 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
+type PageProps = {
+  params: {
+    id: string;
+  };
+};
 
-const JobDetailPage = async ({ params }: { params: { id: string } }) => {
+const JobDetailPage = async ({ params }: PageProps) => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
