@@ -23,7 +23,7 @@ async function authenticateAndRedirect(): Promise<string> {
 export const createJobAction = async (
   values: createAndEditJobType
 ): Promise<JobType | null> => {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  await new Promise((resolve) => setTimeout(resolve, 500));
   const userId = await authenticateAndRedirect();
   try {
     createAndEditJobSchema.parse(values);
@@ -52,7 +52,7 @@ export const getAllJobsAction = async ({
   search,
   jobStatus,
   page = 1,
-  limit = 10,
+  limit = 12,
 }: GetAllJobsActionTypes): Promise<{
   jobs: JobType[];
   count: number;
@@ -92,14 +92,23 @@ export const getAllJobsAction = async ({
       };
     }
 
-    const jobs = await prisma.job.findMany({
+    const skip = (page - 1) * limit;
+
+    const jobs: JobType[] = await prisma.job.findMany({
       where: whereClause,
+      skip,
+      take: limit,
       orderBy: {
         createdAt: "desc",
       },
     });
 
-    return { jobs, count: 0, page: 1, totalPages: 0 };
+    const count: number = await prisma.job.count({
+      where: whereClause,
+    });
+    const totalPages = Math.ceil(count / limit);
+
+    return { jobs, count, page, totalPages };
   } catch (error) {
     console.error(error);
     return { jobs: [], count: 0, page: 1, totalPages: 0 };
@@ -185,7 +194,7 @@ export const getStatsAction = async (): Promise<{
 }> => {
   const userId = await authenticateAndRedirect();
   // to show Skeleton
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+  await new Promise((resolve) => setTimeout(resolve, 100));
   try {
     const stats = await prisma.job.groupBy({
       by: ["status"],

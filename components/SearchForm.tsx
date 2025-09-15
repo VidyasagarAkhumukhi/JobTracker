@@ -69,7 +69,11 @@ const SearchContainer = () => {
         className="bg-white"
       />
       <Select defaultValue={jobStatus} name="jobStatus">
-        <SelectTrigger className={`${getStatusStyle(jobStatus)}`}>
+        <SelectTrigger
+          className={`${getStatusStyle(
+            jobStatus
+          )} w-full justify-start capitalize`}
+        >
           <SelectValue />
         </SelectTrigger>
         <SelectContent>

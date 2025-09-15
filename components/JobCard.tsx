@@ -24,7 +24,12 @@ import JobInfo from "./JobInfo";
 import DeleteJobBtn from "./DeleteJobBtn";
 
 function JobCard({ job }: { job: JobType }) {
-  const date = new Date(job.dateApplied).toLocaleDateString();
+  // Use consistent date formatting to avoid hydration mismatch
+  const date = new Date(job.dateApplied).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
 
   // Function to get status-specific styling
   const getStatusStyle = (status: string) => {
