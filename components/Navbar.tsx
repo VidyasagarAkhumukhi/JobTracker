@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import LinksDropdown from "./LinksDropdown";
+import QuickLinksDropdown from "./QuickLinksDropdown";
 import { UserButton } from "@clerk/nextjs";
 import ThemeToggle from "./ThemeToggle";
 import { usePathname } from "next/navigation";
@@ -86,6 +87,8 @@ const Navbar = () => {
               ✨ AI Magic Mode
             </span>
           </div>
+
+          <QuickLinksDropdown />
 
           <div className="h-6 w-px bg-border hidden sm:block"></div>
 

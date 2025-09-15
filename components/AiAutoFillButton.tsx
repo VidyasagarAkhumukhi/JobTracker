@@ -149,7 +149,7 @@ const AiAutofillButton = ({ onAutofill }: AiAutofillButtonProps) => {
           htmlFor="jobDescription"
           className="block text-sm font-medium mb-1"
         >
-          Job Description (Optional AI Autofill)
+          Job Description (Optional Autofill)
         </label>
         <textarea
           id="jobDescription"
