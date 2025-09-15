@@ -474,7 +474,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Project Link** - [https://github.com/VidyasagarAkhumukhi/JobTracker](https://github.com/VidyasagarAkhumukhi/JobTracker)
 
-<!-- **Live Demo** - [https://jobtracker-demo.vercel.app](https://jobtracker-demo.vercel.app) -->
+**Live Demo** - [https://job-tracker-ai-tau.vercel.app/](https://job-tracker-ai-tau.vercel.app/)
 
 ---
 
