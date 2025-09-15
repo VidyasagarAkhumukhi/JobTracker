@@ -1,5 +1,5 @@
 import React from "react";
-import { Control } from "react-hook-form";
+import { Control, FieldValues, Path } from "react-hook-form";
 import {
   Select,
   SelectContent,
@@ -16,12 +16,15 @@ import {
 } from "@/components/ui/form";
 import { Input } from "./ui/input";
 
-type CustomFormFieldProps = {
-  name: string;
-  control: Control<any>;
+type CustomFormFieldProps<T extends FieldValues> = {
+  name: Path<T>;
+  control: Control<T>;
 };
 
-export const CustomFormField = ({ name, control }: CustomFormFieldProps) => {
+export const CustomFormField = <T extends FieldValues>({
+  name,
+  control,
+}: CustomFormFieldProps<T>) => {
   return (
     <FormField
       control={control}
@@ -39,19 +42,19 @@ export const CustomFormField = ({ name, control }: CustomFormFieldProps) => {
   );
 };
 
-type CustomFormSelectProps = {
-  name: string;
-  control: Control<any>;
+type CustomFormSelectProps<T extends FieldValues> = {
+  name: Path<T>;
+  control: Control<T>;
   items: string[];
   labelText?: string;
 };
 
-export const CustomFormSelect = ({
+export const CustomFormSelect = <T extends FieldValues>({
   name,
   control,
   items,
   labelText,
-}: CustomFormSelectProps) => {
+}: CustomFormSelectProps<T>) => {
   return (
     <FormField
       control={control}
@@ -84,17 +87,17 @@ export const CustomFormSelect = ({
   );
 };
 
-type CustomFormDateProps = {
-  name: string;
-  control: Control<any>;
+type CustomFormDateProps<T extends FieldValues> = {
+  name: Path<T>;
+  control: Control<T>;
   labelText?: string;
 };
 
-export const CustomFormDate = ({
+export const CustomFormDate = <T extends FieldValues>({
   name,
   control,
   labelText,
-}: CustomFormDateProps) => {
+}: CustomFormDateProps<T>) => {
   return (
     <FormField
       control={control}
@@ -107,14 +110,14 @@ export const CustomFormDate = ({
               {...field}
               type="date"
               value={
-                field.value instanceof Date
-                  ? field.value.toISOString().split("T")[0]
-                  : field.value
+                field.value
+                  ? new Date(field.value).toISOString().split("T")[0]
+                  : ""
               }
               onChange={(e) => {
                 const dateValue = e.target.value
                   ? new Date(e.target.value)
-                  : new Date();
+                  : null;
                 field.onChange(dateValue);
               }}
             />
