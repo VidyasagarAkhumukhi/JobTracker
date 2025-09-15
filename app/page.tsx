@@ -1,15 +1,7 @@
 import { Button } from "@/components/ui/button";
-import {
-  ArrowRight,
-  CheckCircle,
-  Target,
-  TrendingUp,
-  Users,
-} from "lucide-react";
+import { ArrowRight, CheckCircle, Target, TrendingUp } from "lucide-react";
 import Image from "next/image";
 import LandingImg from "../assets/jobhunt.svg";
-import CareerProgress from "../assets/careerprogress.svg";
-import MainImg from "../assets/main.svg";
 import Link from "next/link";
 
 export default function Home() {
@@ -172,7 +164,7 @@ export default function Home() {
             Your Career?
           </h2>
           <p className="text-xl text-slate-300 mb-12 leading-relaxed">
-            Join thousands of professionals who've accelerated their careers
+            Join thousands of professionals who have accelerated their careers
             with JobTrackAI
           </p>
           <Button
