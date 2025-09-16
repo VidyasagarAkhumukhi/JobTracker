@@ -515,10 +515,12 @@ const QuickLinksDropdown = () => {
         <Button
           variant="outline"
           size="sm"
-          className="hidden md:flex items-center gap-2 bg-background hover:bg-muted border-border/50 hover:border-primary/50 transition-all duration-200"
+          className="flex items-center gap-2 bg-background hover:bg-muted border-border/50 hover:border-primary/50 transition-all duration-200"
         >
           <ExternalLink className="h-4 w-4" />
-          <span className="text-sm font-medium">Quick Links</span>
+          <span className="text-sm font-medium hidden sm:inline">
+            Quick Links
+          </span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
