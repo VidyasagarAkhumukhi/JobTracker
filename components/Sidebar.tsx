@@ -133,13 +133,20 @@ const Sidebar = () => {
           <div className="flex items-center gap-2 mb-2">
             <Sparkles className="h-4 w-4 text-primary" />
             <span className="text-xs font-semibold text-sidebar-foreground">
-              AI Features
+              AI-Powered Suite
             </span>
           </div>
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            Auto-fill job details from descriptions using our advanced AI
-            technology
-          </p>
+          <div className="space-y-1">
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              • Smart job auto-fill from descriptions
+            </p>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              • AI resume optimization & export
+            </p>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              • Personalized cover letter generation
+            </p>
+          </div>
         </div>
       </div>
     </aside>
