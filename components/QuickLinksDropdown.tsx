@@ -361,12 +361,7 @@ const QuickLinksDropdown = () => {
       icon: <Globe className="h-4 w-4" />,
       description: "International jobs with visas",
     },
-    {
-      name: "Work in Ireland",
-      url: "https://workinireland.ie/",
-      icon: <MapPin className="h-4 w-4" />,
-      description: "Irish work permits & visas",
-    },
+
     {
       name: "EU Blue Card Jobs",
       url: "https://www.eu-bluecard.com/jobs/",
@@ -375,15 +370,9 @@ const QuickLinksDropdown = () => {
     },
     {
       name: "TechMeAbroad",
-      url: "https://techmeabroad.com/",
+      url: "https://nodesk.co/remote-work/techmeabroad/",
       icon: <Zap className="h-4 w-4" />,
       description: "Tech jobs with visa support",
-    },
-    {
-      name: "SponsorshipJobs.eu",
-      url: "https://sponsorshipjobs.eu/",
-      icon: <Building2 className="h-4 w-4" />,
-      description: "EU visa sponsorship jobs",
     },
     {
       name: "JobsinBerlin.eu",
@@ -393,7 +382,7 @@ const QuickLinksDropdown = () => {
     },
     {
       name: "Amsterdam Works",
-      url: "https://amsterdamworks.com/",
+      url: "https://www.jobinamsterdam.com/",
       icon: <Building2 className="h-4 w-4" />,
       description: "Netherlands visa support",
     },
@@ -405,7 +394,7 @@ const QuickLinksDropdown = () => {
     },
     {
       name: "Stockholm Jobs",
-      url: "https://www.stockholmjobs.com/",
+      url: "https://www.jobsinstockholm.com/",
       icon: <MapPin className="h-4 w-4" />,
       description: "Swedish job opportunities",
     },
@@ -417,7 +406,7 @@ const QuickLinksDropdown = () => {
     },
     {
       name: "Portugal Jobs",
-      url: "https://www.net-empregos.com/en/",
+      url: "https://europeanjobdays.eu/en/workinportugal2025",
       icon: <Globe className="h-4 w-4" />,
       description: "Portuguese job market",
     },
