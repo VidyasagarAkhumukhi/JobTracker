@@ -758,11 +758,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-**Vidyasagar Akhumukhi** - [your.email@example.com](mailto:your.email@example.com)
+**Vidyasagar Akhumukhi** - [sagar112113@gmail.com](sagar112113@gmail.com)
 
 **Project Link** - [https://github.com/VidyasagarAkhumukhi/JobTracker](https://github.com/VidyasagarAkhumukhi/JobTracker)
 
-**Live Demo** - [https://job-tracker-ai-tau.vercel.app/](https://job-tracker-ai-tau.vercel.app/)
+**Live** - [https://job-tracker-ai-tau.vercel.app/](https://job-tracker-ai-tau.vercel.app/)
 
 ---
 
