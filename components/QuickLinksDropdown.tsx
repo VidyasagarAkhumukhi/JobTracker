@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 
 const QuickLinksDropdown = () => {
+  const [open, setOpen] = useState(false);
   const jobBoards = [
     {
       name: "LinkedIn Jobs",
@@ -59,10 +60,43 @@ const QuickLinksDropdown = () => {
     },
     {
       name: "CareerBuilder",
-      url: "https://www.careerbuilder.com/",
+      url: "https://www.careerbuildercareers.com/",
       icon: <Building2 className="h-4 w-4" />,
       description: "Build your career",
       category: "career",
+    },
+  ];
+
+  const remoteJobBoards = [
+    {
+      name: "RemoteYeah",
+      url: "https://remoteyeah.com/",
+      icon: <MapPin className="h-4 w-4" />,
+      description: "Remote job opportunities",
+    },
+    {
+      name: "NoDesk",
+      url: "https://nodesk.co/remote-jobs/",
+      icon: <MapPin className="h-4 w-4" />,
+      description: "Remote work directory",
+    },
+    {
+      name: "RemoteOK",
+      url: "https://remoteok.io/",
+      icon: <MapPin className="h-4 w-4" />,
+      description: "Remote tech jobs",
+    },
+    {
+      name: "We Work Remotely",
+      url: "https://weworkremotely.com/",
+      icon: <MapPin className="h-4 w-4" />,
+      description: "Remote-first job board",
+    },
+    {
+      name: "Remote.co",
+      url: "https://remote.co/remote-jobs/",
+      icon: <MapPin className="h-4 w-4" />,
+      description: "Remote work opportunities",
     },
   ];
 
@@ -80,12 +114,6 @@ const QuickLinksDropdown = () => {
       description: "Developer-focused jobs",
     },
     {
-      name: "AngelList Talent",
-      url: "https://angel.co/jobs",
-      icon: <Zap className="h-4 w-4" />,
-      description: "Legacy startup platform",
-    },
-    {
       name: "Dice",
       url: "https://www.dice.com/",
       icon: <Building2 className="h-4 w-4" />,
@@ -93,7 +121,7 @@ const QuickLinksDropdown = () => {
     },
     {
       name: "GitHub Jobs",
-      url: "https://github.com/jobs",
+      url: "https://www.github.careers/careers-home",
       icon: <Globe className="h-4 w-4" />,
       description: "Developer jobs on GitHub",
     },
@@ -122,30 +150,6 @@ const QuickLinksDropdown = () => {
       description: "Startup & founder jobs",
     },
     {
-      name: "NoDesk",
-      url: "https://nodesk.co/remote-jobs/",
-      icon: <MapPin className="h-4 w-4" />,
-      description: "Remote work directory",
-    },
-    {
-      name: "RemoteOK",
-      url: "https://remoteok.io/",
-      icon: <MapPin className="h-4 w-4" />,
-      description: "Remote tech jobs",
-    },
-    {
-      name: "We Work Remotely",
-      url: "https://weworkremotely.com/",
-      icon: <MapPin className="h-4 w-4" />,
-      description: "Remote-first job board",
-    },
-    {
-      name: "Remote.co",
-      url: "https://remote.co/remote-jobs/",
-      icon: <MapPin className="h-4 w-4" />,
-      description: "Remote work opportunities",
-    },
-    {
       name: "Toptal",
       url: "https://www.toptal.com/",
       icon: <Users className="h-4 w-4" />,
@@ -170,34 +174,16 @@ const QuickLinksDropdown = () => {
       description: "Design & creative jobs",
     },
     {
-      name: "Behance Job Board",
-      url: "https://www.behance.net/jobboard",
-      icon: <Building2 className="h-4 w-4" />,
-      description: "Creative & design positions",
-    },
-    {
       name: "Product Hunt Jobs",
-      url: "https://www.producthunt.com/jobs",
+      url: "https://www.producthunt.com/topics/hiring",
       icon: <Zap className="h-4 w-4" />,
       description: "Product & startup roles",
-    },
-    {
-      name: "Y Combinator Jobs",
-      url: "https://www.worklist.fyi/",
-      icon: <Zap className="h-4 w-4" />,
-      description: "YC company positions",
     },
     {
       name: "Tech Ladies",
       url: "https://www.hiretechladies.com/",
       icon: <Users className="h-4 w-4" />,
       description: "Tech jobs for women",
-    },
-    {
-      name: "Key Values",
-      url: "https://www.keyvalues.com/",
-      icon: <Building2 className="h-4 w-4" />,
-      description: "Culture-first job matching",
     },
     {
       name: "Relocate.me",
@@ -210,12 +196,6 @@ const QuickLinksDropdown = () => {
       url: "https://powertofly.com/jobs/",
       icon: <Users className="h-4 w-4" />,
       description: "Diverse tech talent",
-    },
-    {
-      name: "Triplebyte",
-      url: "https://triplebyte.com/",
-      icon: <Building2 className="h-4 w-4" />,
-      description: "Engineer job marketplace",
     },
     {
       name: "Cord",
@@ -240,12 +220,6 @@ const QuickLinksDropdown = () => {
       url: "https://boards.greenhouse.io/",
       icon: <Building2 className="h-4 w-4" />,
       description: "Company-specific boards",
-    },
-    {
-      name: "Lever Job Board",
-      url: "https://jobs.lever.co/",
-      icon: <Building2 className="h-4 w-4" />,
-      description: "ATS-powered job search",
     },
   ];
 
@@ -274,12 +248,12 @@ const QuickLinksDropdown = () => {
       icon: <Users className="h-4 w-4" />,
       description: "Professional jobs in Ireland",
     },
-    {
-      name: "TheJournal Jobs",
-      url: "https://www.thejournal.ie/jobs/",
-      icon: <Building2 className="h-4 w-4" />,
-      description: "Irish media job portal",
-    },
+    // {
+    //   name: "TheJournal Jobs",
+    //   url: "https://www.thejournal.ie/jobs/",
+    //   icon: <Building2 className="h-4 w-4" />,
+    //   description: "Irish media job portal",
+    // },
   ];
 
   const recruitmentAgencies = [
@@ -309,15 +283,81 @@ const QuickLinksDropdown = () => {
     },
     {
       name: "Reperio Human Capital",
-      url: "https://www.reperio.ie/",
+      url: "https://www.reperiohumancapital.com/jobs-search",
       icon: <Zap className="h-4 w-4" />,
       description: "Tech recruitment Ireland",
     },
     {
       name: "Version 1 Careers",
-      url: "https://www.version1.com/careers/",
+      url: "https://www.version1.com/careers/job-listing/?searchterm=&taxonomyFilter-dept=&taxonomyFilter-location=ireland&taxonomyFilter-practice=",
       icon: <Globe className="h-4 w-4" />,
       description: "IT recruitment Ireland",
+    },
+    {
+      name: "Collins McNicholas",
+      url: "https://www.collinsmcnicholas.ie/jobs/",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "Professional recruitment Ireland",
+    },
+    {
+      name: "Built In Dublin",
+      url: "https://builtindublin.ie/jobs",
+      icon: <Zap className="h-4 w-4" />,
+      description: "Dublin tech & startup jobs",
+    },
+    {
+      name: "Solas IT",
+      url: "https://www.solasit.ie/",
+      icon: <Globe className="h-4 w-4" />,
+      description: "IT recruitment specialists",
+    },
+    {
+      name: "Matrix Recruitment",
+      url: "https://www.matrixrecruitment.ie/?source=google.com",
+      icon: <Users className="h-4 w-4" />,
+      description: "Professional staffing solutions",
+    },
+    {
+      name: "CompuStaff",
+      url: "https://www.compustaff.ie/",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "IT & finance recruitment",
+    },
+    {
+      name: "RealTime Jobs",
+      url: "https://realtime.jobs/",
+      icon: <Zap className="h-4 w-4" />,
+      description: "Real-time job matching",
+    },
+    {
+      name: "TechHeads",
+      url: "https://techheads.ie/candidate-services/",
+      icon: <Globe className="h-4 w-4" />,
+      description: "Technology recruitment experts",
+    },
+    {
+      name: "Workday Ireland",
+      url: "https://workday.wd5.myworkdayjobs.com/en-US/Workday?q=Ireland",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "Workday careers in Ireland",
+    },
+    {
+      name: "Stripe Dublin",
+      url: "https://stripe.com/jobs/search?office_locations=Europe--Dublin",
+      icon: <Zap className="h-4 w-4" />,
+      description: "Stripe careers in Dublin",
+    },
+    {
+      name: "Hadfield Green",
+      url: "https://www.hadfieldgreen.com/jobs/",
+      icon: <Users className="h-4 w-4" />,
+      description: "Specialist recruitment agency",
+    },
+    {
+      name: "Simply Hired Ireland",
+      url: "https://www.simplyhired.ie/",
+      icon: <Briefcase className="h-4 w-4" />,
+      description: "Job search engine Ireland",
     },
   ];
 
@@ -341,10 +381,10 @@ const QuickLinksDropdown = () => {
       description: "Local European jobs",
     },
     {
-      name: "Jobs.eu",
-      url: "https://www.jobs.eu/",
-      icon: <Building2 className="h-4 w-4" />,
-      description: "European job search",
+      name: "European Commission",
+      url: "https://ec.europa.eu/search/?QueryText=job&swlang=en",
+      icon: <Users className="h-4 w-4" />,
+      description: "EU skilled migration specialists",
     },
   ];
 
@@ -414,12 +454,6 @@ const QuickLinksDropdown = () => {
 
   const visaSponsorshipAgencies = [
     {
-      name: "Global Skilled Migration",
-      url: "https://www.globalskilledmigration.com/",
-      icon: <Users className="h-4 w-4" />,
-      description: "EU skilled migration specialists",
-    },
-    {
       name: "Migrate World",
       url: "https://www.migrateworld.com/",
       icon: <Globe className="h-4 w-4" />,
@@ -427,13 +461,13 @@ const QuickLinksDropdown = () => {
     },
     {
       name: "European Recruitment",
-      url: "https://www.europeanrecruitment.com/",
+      url: "https://www.euro-recruitment.com/",
       icon: <Building2 className="h-4 w-4" />,
       description: "Pan-European recruitment",
     },
     {
       name: "TalentBridge International",
-      url: "https://talentbridge.ie/",
+      url: "https://talentbridge.com/",
       icon: <Users className="h-4 w-4" />,
       description: "Irish visa sponsorship experts",
     },
@@ -444,57 +478,39 @@ const QuickLinksDropdown = () => {
       description: "Global work permit guidance",
     },
     {
-      name: "EU Immigration Services",
-      url: "https://www.euimmigration.com/",
-      icon: <Globe className="h-4 w-4" />,
-      description: "EU immigration specialists",
-    },
-    {
-      name: "Irish Visa Services",
-      url: "https://www.irishvisaservices.com/",
-      icon: <MapPin className="h-4 w-4" />,
-      description: "Ireland visa & work permits",
-    },
-    {
-      name: "Tech Visa Europe",
-      url: "https://techvisaeurope.com/",
-      icon: <Zap className="h-4 w-4" />,
-      description: "Tech talent visa services",
-    },
-    {
       name: "Blue Card Network",
       url: "https://bluecardnetwork.eu/",
       icon: <Building2 className="h-4 w-4" />,
       description: "EU Blue Card specialists",
     },
     {
-      name: "Skilled Worker Visa EU",
-      url: "https://skilledworkervisaeu.com/",
-      icon: <Users className="h-4 w-4" />,
-      description: "EU skilled worker programs",
-    },
-    {
       name: "Global Talent Stream",
-      url: "https://globaltalentstream.eu/",
+      url: "https://europa.eu/eures/portal/jv-se/home?lang=en",
       icon: <Globe className="h-4 w-4" />,
-      description: "Fast-track EU visas",
-    },
-    {
-      name: "International Careers IE",
-      url: "https://internationalcareers.ie/",
-      icon: <Briefcase className="h-4 w-4" />,
-      description: "Ireland international recruitment",
+      description: "EU Job Search",
     },
   ];
 
-  const handleLinkClick = (url: string, name: string) => {
+  const handleLinkClick = (
+    url: string,
+    name: string,
+    event?: React.MouseEvent
+  ) => {
+    // Prevent the dropdown from closing
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
     // Track click for analytics if needed
     console.log(`Quick link clicked: ${name}`);
     window.open(url, "_blank", "noopener,noreferrer");
+
+    // Keep the dropdown open by not changing the state
   };
 
   return (
-    <DropdownMenu>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
         <Button
           variant="outline"
@@ -525,9 +541,12 @@ const QuickLinksDropdown = () => {
             <DropdownMenuItem
               key={board.name}
               className="p-0"
-              onSelect={() => handleLinkClick(board.url, board.name)}
+              onSelect={(e) => e.preventDefault()}
             >
-              <div className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors">
+              <div
+                className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors"
+                onClick={(e) => handleLinkClick(board.url, board.name, e)}
+              >
                 <div className="p-1 bg-green-100 text-green-700 rounded">
                   {board.icon}
                 </div>
@@ -558,9 +577,12 @@ const QuickLinksDropdown = () => {
             <DropdownMenuItem
               key={agency.name}
               className="p-0"
-              onSelect={() => handleLinkClick(agency.url, agency.name)}
+              onSelect={(e) => e.preventDefault()}
             >
-              <div className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors">
+              <div
+                className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors"
+                onClick={(e) => handleLinkClick(agency.url, agency.name, e)}
+              >
                 <div className="p-1 bg-emerald-100 text-emerald-700 rounded">
                   {agency.icon}
                 </div>
@@ -591,9 +613,12 @@ const QuickLinksDropdown = () => {
             <DropdownMenuItem
               key={board.name}
               className="p-0"
-              onSelect={() => handleLinkClick(board.url, board.name)}
+              onSelect={(e) => e.preventDefault()}
             >
-              <div className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors">
+              <div
+                className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors"
+                onClick={(e) => handleLinkClick(board.url, board.name, e)}
+              >
                 <div className="p-1 bg-blue-100 text-blue-700 rounded">
                   {board.icon}
                 </div>
@@ -624,9 +649,12 @@ const QuickLinksDropdown = () => {
             <DropdownMenuItem
               key={board.name}
               className="p-0"
-              onSelect={() => handleLinkClick(board.url, board.name)}
+              onSelect={(e) => e.preventDefault()}
             >
-              <div className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors">
+              <div
+                className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors"
+                onClick={(e) => handleLinkClick(board.url, board.name, e)}
+              >
                 <div className="p-1 bg-orange-100 text-orange-700 rounded">
                   {board.icon}
                 </div>
@@ -657,9 +685,12 @@ const QuickLinksDropdown = () => {
             <DropdownMenuItem
               key={agency.name}
               className="p-0"
-              onSelect={() => handleLinkClick(agency.url, agency.name)}
+              onSelect={(e) => e.preventDefault()}
             >
-              <div className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors">
+              <div
+                className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors"
+                onClick={(e) => handleLinkClick(agency.url, agency.name, e)}
+              >
                 <div className="p-1 bg-amber-100 text-amber-700 rounded">
                   {agency.icon}
                 </div>
@@ -681,6 +712,42 @@ const QuickLinksDropdown = () => {
 
         <DropdownMenuSeparator />
 
+        {/* Remote Job Boards */}
+        <DropdownMenuLabel className="text-xs text-indigo-600 px-3 py-1 flex items-center gap-1">
+          🏠 Remote Work
+        </DropdownMenuLabel>
+        <div className="px-1 py-1">
+          {remoteJobBoards.map((board) => (
+            <DropdownMenuItem
+              key={board.name}
+              className="p-0"
+              onSelect={(e) => e.preventDefault()}
+            >
+              <div
+                className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors"
+                onClick={(e) => handleLinkClick(board.url, board.name, e)}
+              >
+                <div className="p-1 bg-indigo-100 text-indigo-700 rounded">
+                  {board.icon}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-sm truncate">
+                      {board.name}
+                    </span>
+                    <ExternalLink className="h-3 w-3 text-muted-foreground flex-shrink-0" />
+                  </div>
+                  <p className="text-xs text-muted-foreground truncate">
+                    {board.description}
+                  </p>
+                </div>
+              </div>
+            </DropdownMenuItem>
+          ))}
+        </div>
+
+        <DropdownMenuSeparator />
+
         {/* General Job Boards */}
         <DropdownMenuLabel className="text-xs text-muted-foreground px-3 py-1">
           🌍 Global Job Boards
@@ -690,9 +757,12 @@ const QuickLinksDropdown = () => {
             <DropdownMenuItem
               key={board.name}
               className="p-0"
-              onSelect={() => handleLinkClick(board.url, board.name)}
+              onSelect={(e) => e.preventDefault()}
             >
-              <div className="flex items-center gap-3 w-full px-3 py-2.5 rounded-sm hover:bg-muted cursor-pointer transition-colors">
+              <div
+                className="flex items-center gap-3 w-full px-3 py-2.5 rounded-sm hover:bg-muted cursor-pointer transition-colors"
+                onClick={(e) => handleLinkClick(board.url, board.name, e)}
+              >
                 <div className="p-1 bg-primary/10 text-primary rounded">
                   {board.icon}
                 </div>
@@ -723,9 +793,12 @@ const QuickLinksDropdown = () => {
             <DropdownMenuItem
               key={board.name}
               className="p-0"
-              onSelect={() => handleLinkClick(board.url, board.name)}
+              onSelect={(e) => e.preventDefault()}
             >
-              <div className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors">
+              <div
+                className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors"
+                onClick={(e) => handleLinkClick(board.url, board.name, e)}
+              >
                 <div className="p-1 bg-purple-100 text-purple-700 rounded">
                   {board.icon}
                 </div>
