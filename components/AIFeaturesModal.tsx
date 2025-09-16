@@ -95,7 +95,7 @@ const AIFeaturesModal = ({ children }: AIFeaturesModalProps) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="w-[98vw] sm:w-[90vw] max-w-sm sm:max-w-4xl h-[98vh] sm:h-[90vh] max-h-[600px] sm:max-h-[800px] overflow-hidden p-0">
+      <DialogContent className="w-[98vw] sm:w-[95vw] max-w-sm sm:max-w-6xl lg:max-w-7xl h-[98vh] sm:h-[95vh] max-h-[700px] sm:max-h-[900px] lg:max-h-[95vh] overflow-hidden p-0">
         <div className="flex flex-col h-full w-full overflow-hidden">
           <DialogHeader className="space-y-2 sm:space-y-3 p-2 sm:p-3 pb-0 flex-shrink-0">
             <div className="flex items-center gap-2 sm:gap-3 min-w-0">

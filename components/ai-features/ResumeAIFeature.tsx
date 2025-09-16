@@ -531,92 +531,262 @@ const ResumeAIFeature = () => {
 
   return (
     <div className="space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <FileTextIcon className="h-5 w-5 text-primary" />
-            <span>AI Resume Tailor</span>
+      <Card className="border-border bg-card">
+        <CardHeader className="pb-6">
+          <CardTitle className="flex items-center gap-3">
+            <div className="p-3 bg-primary/10 rounded-lg border">
+              <FileTextIcon className="h-6 w-6 text-primary" />
+            </div>
+            <div>
+              <span className="text-xl font-bold text-foreground">
+                AI Resume Optimizer
+              </span>
+              <p className="text-sm text-muted-foreground font-normal mt-1">
+                Create ATS-friendly resumes tailored for each job
+              </p>
+            </div>
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <div className="space-y-2">
-              <Label htmlFor="original-resume">Your Current Resume</Label>
-              <Textarea
-                id="original-resume"
-                placeholder="Paste your full current resume here..."
-                value={originalResume}
-                onChange={(e) => setOriginalResume(e.target.value)}
-                className="h-48 resize-none"
-              />
+
+        <CardContent className="space-y-6">
+          {/* Input Focus Area */}
+          <div className="p-6 bg-muted/20 rounded-lg border-2 border-dashed border-border">
+            <div className="text-center mb-6">
+              <h3 className="font-semibold text-lg text-foreground mb-2">
+                Input Your Information
+              </h3>
+              <p className="text-muted-foreground">
+                Provide your resume and target job to generate an optimized
+                version
+              </p>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="job-description">Target Job Description</Label>
-              <Textarea
-                id="job-description"
-                placeholder="Paste the job description you are applying for..."
-                value={jobDescription}
-                onChange={(e) => setJobDescription(e.target.value)}
-                className="h-48 resize-none"
-              />
+
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+              <div className="space-y-3">
+                <Label
+                  htmlFor="original-resume"
+                  className="text-sm font-medium flex items-center gap-2"
+                >
+                  <FileTextIcon className="h-4 w-4 text-primary" />
+                  Your Current Resume
+                </Label>
+                <Textarea
+                  id="original-resume"
+                  placeholder="Paste your complete resume here including:
+• Work experience and achievements
+• Education and certifications  
+• Skills and technologies
+• Contact information"
+                  value={originalResume}
+                  onChange={(e) => setOriginalResume(e.target.value)}
+                  className="h-48 resize-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                />
+                <p className="text-xs text-muted-foreground">
+                  ℹ️ Include all sections for best results
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <Label
+                  htmlFor="job-description"
+                  className="text-sm font-medium flex items-center gap-2"
+                >
+                  <SparklesIcon className="h-4 w-4 text-primary" />
+                  Target Job Description
+                </Label>
+                <Textarea
+                  id="job-description"
+                  placeholder="Paste the complete job description:
+• Job requirements and qualifications
+• Preferred skills and experience
+• Company information
+• Role responsibilities"
+                  value={jobDescription}
+                  onChange={(e) => setJobDescription(e.target.value)}
+                  className="h-48 resize-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                />
+                <p className="text-xs text-muted-foreground">
+                  🎯 AI will analyze and match requirements
+                </p>
+              </div>
             </div>
           </div>
-          <Button
-            onClick={handleGenerateResume}
-            disabled={isLoading}
-            className="w-full"
-          >
-            <SparklesIcon className="mr-2 h-4 w-4" />
-            {isLoading
-              ? "Generating Your ATS-Optimized Resume..."
-              : "Generate Tailored Resume"}
-          </Button>
-          <p className="text-xs text-muted-foreground text-center">
-            ✨ Generated resume will be in clean, plain text format - ready to
-            copy, paste, or download as Word document
-            <br />
-            <span className="text-amber-700">
-              Note: Please check and re-add any links (LinkedIn, GitHub,
-              portfolio, etc) as they appear as plain text
-            </span>
-          </p>
+
+          {/* Generate Button - Prominent */}
+          <div className="text-center">
+            <Button
+              onClick={handleGenerateResume}
+              disabled={isLoading || !originalResume || !jobDescription}
+              size="lg"
+              className="w-full sm:w-auto px-8 h-14 text-base font-medium"
+            >
+              <SparklesIcon className="mr-3 h-5 w-5" />
+              {isLoading
+                ? "Optimizing Your Resume..."
+                : "Generate Optimized Resume"}
+            </Button>
+
+            {(!originalResume || !jobDescription) && (
+              <p className="text-sm text-muted-foreground mt-2">
+                Please fill in both fields above to continue
+              </p>
+            )}
+          </div>
         </CardContent>
       </Card>
 
+      {/* Generated Resume Output - Right Below Generate Button */}
       {generatedResume && (
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle className="text-lg">Generated Resume</CardTitle>
-            <div className="flex gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleCopyToClipboard}
-              >
-                {hasCopied ? (
-                  <CheckIcon className="mr-2 h-4 w-4" />
-                ) : (
-                  <ClipboardIcon className="mr-2 h-4 w-4" />
-                )}
-                {hasCopied ? "Copied!" : "Copy"}
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleDownloadAsWord}
-              >
-                <DownloadIcon className="mr-2 h-4 w-4" />
-                Download Word
-              </Button>
+        <Card className="border-border bg-card">
+          <CardHeader className="pb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <CardTitle className="text-lg flex items-center gap-2">
+                <CheckIcon className="h-5 w-5 text-primary" />
+                <span className="text-foreground">Your Optimized Resume</span>
+              </CardTitle>
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleCopyToClipboard}
+                  className="border-border hover:bg-muted"
+                >
+                  {hasCopied ? (
+                    <CheckIcon className="mr-2 h-4 w-4" />
+                  ) : (
+                    <ClipboardIcon className="mr-2 h-4 w-4" />
+                  )}
+                  {hasCopied ? "Copied!" : "Copy Text"}
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleDownloadAsWord}
+                  className="border-border hover:bg-muted"
+                >
+                  <DownloadIcon className="mr-2 h-4 w-4" />
+                  Download Word
+                </Button>
+              </div>
             </div>
           </CardHeader>
           <CardContent>
-            <div className="whitespace-pre-wrap rounded-md bg-muted p-6 font-sans text-sm leading-relaxed border">
-              {generatedResume}
+            <div className="space-y-6">
+              {/* Resume Preview - Main Output */}
+              <div className="p-6 bg-muted/20 rounded-lg border-2 border-dashed border-border">
+                <div className="mb-4 text-center">
+                  <h3 className="font-semibold text-foreground mb-1">
+                    Generated Resume
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Review and customize as needed
+                  </p>
+                </div>
+                <div className="whitespace-pre-wrap bg-background p-6 font-mono text-sm leading-relaxed border rounded-lg max-h-96 overflow-y-auto">
+                  {generatedResume}
+                </div>
+              </div>
+
+              {/* Action Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-4 bg-card rounded-lg border">
+                  <div className="flex items-start gap-3">
+                    <DownloadIcon className="h-5 w-5 text-primary mt-0.5" />
+                    <div>
+                      <h4 className="font-medium text-foreground mb-1">
+                        Professional Export
+                      </h4>
+                      <p className="text-xs text-muted-foreground">
+                        Downloads as .docx with your name, job title, and
+                        company in filename. Perfect for ATS systems and online
+                        applications.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-card rounded-lg border">
+                  <div className="flex items-start gap-3">
+                    <SparklesIcon className="h-5 w-5 text-primary mt-0.5" />
+                    <div>
+                      <h4 className="font-medium text-foreground mb-1">
+                        Review & Personalize
+                      </h4>
+                      <p className="text-xs text-muted-foreground">
+                        Check and re-add any links (LinkedIn, GitHub,
+                        portfolio). Customize details before submitting
+                        applications.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>
       )}
+
+      {/* Features & Tips - Moved to Bottom for Less Clutter */}
+      <Card className="border-border bg-card">
+        <CardContent className="pt-6">
+          {/* Features Overview */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="p-4 bg-muted/50 rounded-lg border">
+              <div className="flex items-center gap-2 mb-2">
+                <SparklesIcon className="h-5 w-5 text-primary" />
+                <h3 className="font-medium text-foreground text-sm">
+                  Smart Optimization
+                </h3>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Matches your experience with job requirements using relevant
+                keywords
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border">
+              <div className="flex items-center gap-2 mb-2">
+                <CheckIcon className="h-5 w-5 text-primary" />
+                <h3 className="font-medium text-foreground text-sm">
+                  ATS-Friendly
+                </h3>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Formatted to pass Applicant Tracking Systems successfully
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border">
+              <div className="flex items-center gap-2 mb-2">
+                <DownloadIcon className="h-5 w-5 text-primary" />
+                <h3 className="font-medium text-foreground text-sm">
+                  Professional Export
+                </h3>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Download as Word document with clean, professional formatting
+              </p>
+            </div>
+          </div>
+
+          {/* Quick Tips */}
+          <div className="p-4 bg-muted/20 rounded-lg border">
+            <h4 className="font-medium text-foreground mb-3 flex items-center gap-2">
+              <SparklesIcon className="h-4 w-4 text-primary" />
+              How It Works
+            </h4>
+            <ul className="text-sm text-muted-foreground space-y-1">
+              <li>• AI analyzes job requirements and identifies key skills</li>
+              <li>
+                • Restructures your experience to highlight relevant
+                qualifications
+              </li>
+              <li>
+                • Ensures proper ATS formatting with clear section headers
+              </li>
+              <li>• Creates professional layout ready for applications</li>
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };

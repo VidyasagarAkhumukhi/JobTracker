@@ -68,16 +68,22 @@ const QuickLinksDropdown = () => {
 
   const techJobBoards = [
     {
+      name: "Wellfound",
+      url: "https://wellfound.com/",
+      icon: <Zap className="h-4 w-4" />,
+      description: "Startup jobs & equity (formerly AngelList)",
+    },
+    {
       name: "Stack Overflow Jobs",
       url: "https://stackoverflowjobs.com/?co=GB",
       icon: <Globe className="h-4 w-4" />,
       description: "Developer-focused jobs",
     },
     {
-      name: "AngelList",
+      name: "AngelList Talent",
       url: "https://angel.co/jobs",
       icon: <Zap className="h-4 w-4" />,
-      description: "Startup jobs & equity",
+      description: "Legacy startup platform",
     },
     {
       name: "Dice",
@@ -86,10 +92,160 @@ const QuickLinksDropdown = () => {
       description: "Tech career marketplace",
     },
     {
+      name: "GitHub Jobs",
+      url: "https://github.com/jobs",
+      icon: <Globe className="h-4 w-4" />,
+      description: "Developer jobs on GitHub",
+    },
+    {
+      name: "Hacker News Jobs",
+      url: "https://news.ycombinator.com/jobs",
+      icon: <Zap className="h-4 w-4" />,
+      description: "YC community job board",
+    },
+    {
+      name: "CrunchBoard",
+      url: "https://www.crunchboard.com/",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "TechCrunch's job board",
+    },
+    {
+      name: "Startup.jobs",
+      url: "https://startup.jobs/",
+      icon: <Zap className="h-4 w-4" />,
+      description: "Global startup opportunities",
+    },
+    {
+      name: "F6S Jobs",
+      url: "https://www.f6s.com/jobs",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "Startup & founder jobs",
+    },
+    {
+      name: "NoDesk",
+      url: "https://nodesk.co/remote-jobs/",
+      icon: <MapPin className="h-4 w-4" />,
+      description: "Remote work directory",
+    },
+    {
+      name: "RemoteOK",
+      url: "https://remoteok.io/",
+      icon: <MapPin className="h-4 w-4" />,
+      description: "Remote tech jobs",
+    },
+    {
+      name: "We Work Remotely",
+      url: "https://weworkremotely.com/",
+      icon: <MapPin className="h-4 w-4" />,
+      description: "Remote-first job board",
+    },
+    {
       name: "Remote.co",
       url: "https://remote.co/remote-jobs/",
       icon: <MapPin className="h-4 w-4" />,
       description: "Remote work opportunities",
+    },
+    {
+      name: "Toptal",
+      url: "https://www.toptal.com/",
+      icon: <Users className="h-4 w-4" />,
+      description: "Elite freelance network",
+    },
+    {
+      name: "Upwork",
+      url: "https://www.upwork.com/",
+      icon: <Users className="h-4 w-4" />,
+      description: "Freelance & contract work",
+    },
+    {
+      name: "Freelancer.com",
+      url: "https://www.freelancer.com/",
+      icon: <Users className="h-4 w-4" />,
+      description: "Global freelancing platform",
+    },
+    {
+      name: "Dribbble Jobs",
+      url: "https://dribbble.com/jobs",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "Design & creative jobs",
+    },
+    {
+      name: "Behance Job Board",
+      url: "https://www.behance.net/jobboard",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "Creative & design positions",
+    },
+    {
+      name: "Product Hunt Jobs",
+      url: "https://www.producthunt.com/jobs",
+      icon: <Zap className="h-4 w-4" />,
+      description: "Product & startup roles",
+    },
+    {
+      name: "Y Combinator Jobs",
+      url: "https://www.worklist.fyi/",
+      icon: <Zap className="h-4 w-4" />,
+      description: "YC company positions",
+    },
+    {
+      name: "Tech Ladies",
+      url: "https://www.hiretechladies.com/",
+      icon: <Users className="h-4 w-4" />,
+      description: "Tech jobs for women",
+    },
+    {
+      name: "Key Values",
+      url: "https://www.keyvalues.com/",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "Culture-first job matching",
+    },
+    {
+      name: "Relocate.me",
+      url: "https://relocate.me/",
+      icon: <MapPin className="h-4 w-4" />,
+      description: "Jobs with visa sponsorship",
+    },
+    {
+      name: "PowerToFly",
+      url: "https://powertofly.com/jobs/",
+      icon: <Users className="h-4 w-4" />,
+      description: "Diverse tech talent",
+    },
+    {
+      name: "Triplebyte",
+      url: "https://triplebyte.com/",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "Engineer job marketplace",
+    },
+    {
+      name: "Cord",
+      url: "https://cord.co/",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "Tech recruitment platform",
+    },
+    {
+      name: "Otta",
+      url: "https://otta.com/",
+      icon: <Zap className="h-4 w-4" />,
+      description: "Startup job discovery",
+    },
+    {
+      name: "Huntr",
+      url: "https://huntr.co/",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "Job tracking & discovery",
+    },
+    {
+      name: "Greenhouse Job Board",
+      url: "https://boards.greenhouse.io/",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "Company-specific boards",
+    },
+    {
+      name: "Lever Job Board",
+      url: "https://jobs.lever.co/",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "ATS-powered job search",
     },
   ];
 
@@ -189,6 +345,156 @@ const QuickLinksDropdown = () => {
       url: "https://www.jobs.eu/",
       icon: <Building2 className="h-4 w-4" />,
       description: "European job search",
+    },
+  ];
+
+  const visaSponsorshipBoards = [
+    {
+      name: "Relocate.me",
+      url: "https://relocate.me/",
+      icon: <MapPin className="h-4 w-4" />,
+      description: "Global jobs with visa sponsorship",
+    },
+    {
+      name: "Visa-Jobs.com",
+      url: "https://www.visa-jobs.com/",
+      icon: <Globe className="h-4 w-4" />,
+      description: "International jobs with visas",
+    },
+    {
+      name: "Work in Ireland",
+      url: "https://workinireland.ie/",
+      icon: <MapPin className="h-4 w-4" />,
+      description: "Irish work permits & visas",
+    },
+    {
+      name: "EU Blue Card Jobs",
+      url: "https://www.eu-bluecard.com/jobs/",
+      icon: <Globe className="h-4 w-4" />,
+      description: "EU skilled worker visas",
+    },
+    {
+      name: "TechMeAbroad",
+      url: "https://techmeabroad.com/",
+      icon: <Zap className="h-4 w-4" />,
+      description: "Tech jobs with visa support",
+    },
+    {
+      name: "SponsorshipJobs.eu",
+      url: "https://sponsorshipjobs.eu/",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "EU visa sponsorship jobs",
+    },
+    {
+      name: "JobsinBerlin.eu",
+      url: "https://jobsinberlin.eu/jobs/visa-sponsored",
+      icon: <MapPin className="h-4 w-4" />,
+      description: "Berlin visa-sponsored roles",
+    },
+    {
+      name: "Amsterdam Works",
+      url: "https://amsterdamworks.com/",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "Netherlands visa support",
+    },
+    {
+      name: "Jobs.de International",
+      url: "https://jobs.de/en/international",
+      icon: <Globe className="h-4 w-4" />,
+      description: "German jobs for internationals",
+    },
+    {
+      name: "Stockholm Jobs",
+      url: "https://www.stockholmjobs.com/",
+      icon: <MapPin className="h-4 w-4" />,
+      description: "Swedish job opportunities",
+    },
+    {
+      name: "Denmark.dk Jobs",
+      url: "https://www.workindenmark.dk/",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "Work in Denmark portal",
+    },
+    {
+      name: "Portugal Jobs",
+      url: "https://www.net-empregos.com/en/",
+      icon: <Globe className="h-4 w-4" />,
+      description: "Portuguese job market",
+    },
+  ];
+
+  const visaSponsorshipAgencies = [
+    {
+      name: "Global Skilled Migration",
+      url: "https://www.globalskilledmigration.com/",
+      icon: <Users className="h-4 w-4" />,
+      description: "EU skilled migration specialists",
+    },
+    {
+      name: "Migrate World",
+      url: "https://www.migrateworld.com/",
+      icon: <Globe className="h-4 w-4" />,
+      description: "International migration services",
+    },
+    {
+      name: "European Recruitment",
+      url: "https://www.europeanrecruitment.com/",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "Pan-European recruitment",
+    },
+    {
+      name: "TalentBridge International",
+      url: "https://talentbridge.ie/",
+      icon: <Users className="h-4 w-4" />,
+      description: "Irish visa sponsorship experts",
+    },
+    {
+      name: "WorkPermit.com",
+      url: "https://workpermit.com/",
+      icon: <MapPin className="h-4 w-4" />,
+      description: "Global work permit guidance",
+    },
+    {
+      name: "EU Immigration Services",
+      url: "https://www.euimmigration.com/",
+      icon: <Globe className="h-4 w-4" />,
+      description: "EU immigration specialists",
+    },
+    {
+      name: "Irish Visa Services",
+      url: "https://www.irishvisaservices.com/",
+      icon: <MapPin className="h-4 w-4" />,
+      description: "Ireland visa & work permits",
+    },
+    {
+      name: "Tech Visa Europe",
+      url: "https://techvisaeurope.com/",
+      icon: <Zap className="h-4 w-4" />,
+      description: "Tech talent visa services",
+    },
+    {
+      name: "Blue Card Network",
+      url: "https://bluecardnetwork.eu/",
+      icon: <Building2 className="h-4 w-4" />,
+      description: "EU Blue Card specialists",
+    },
+    {
+      name: "Skilled Worker Visa EU",
+      url: "https://skilledworkervisaeu.com/",
+      icon: <Users className="h-4 w-4" />,
+      description: "EU skilled worker programs",
+    },
+    {
+      name: "Global Talent Stream",
+      url: "https://globaltalentstream.eu/",
+      icon: <Globe className="h-4 w-4" />,
+      description: "Fast-track EU visas",
+    },
+    {
+      name: "International Careers IE",
+      url: "https://internationalcareers.ie/",
+      icon: <Briefcase className="h-4 w-4" />,
+      description: "Ireland international recruitment",
     },
   ];
 
@@ -311,6 +617,72 @@ const QuickLinksDropdown = () => {
                   </div>
                   <p className="text-xs text-muted-foreground truncate">
                     {board.description}
+                  </p>
+                </div>
+              </div>
+            </DropdownMenuItem>
+          ))}
+        </div>
+
+        <DropdownMenuSeparator />
+
+        {/* Visa Sponsorship Job Boards */}
+        <DropdownMenuLabel className="text-xs text-orange-600 px-3 py-1 flex items-center gap-1">
+          🛂 Visa Sponsorship Jobs
+        </DropdownMenuLabel>
+        <div className="px-1 py-1">
+          {visaSponsorshipBoards.map((board) => (
+            <DropdownMenuItem
+              key={board.name}
+              className="p-0"
+              onSelect={() => handleLinkClick(board.url, board.name)}
+            >
+              <div className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors">
+                <div className="p-1 bg-orange-100 text-orange-700 rounded">
+                  {board.icon}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-sm truncate">
+                      {board.name}
+                    </span>
+                    <ExternalLink className="h-3 w-3 text-muted-foreground flex-shrink-0" />
+                  </div>
+                  <p className="text-xs text-muted-foreground truncate">
+                    {board.description}
+                  </p>
+                </div>
+              </div>
+            </DropdownMenuItem>
+          ))}
+        </div>
+
+        <DropdownMenuSeparator />
+
+        {/* Visa Sponsorship Agencies */}
+        <DropdownMenuLabel className="text-xs text-orange-600 px-3 py-1 flex items-center gap-1">
+          🌍 Immigration & Visa Services
+        </DropdownMenuLabel>
+        <div className="px-1 py-1">
+          {visaSponsorshipAgencies.map((agency) => (
+            <DropdownMenuItem
+              key={agency.name}
+              className="p-0"
+              onSelect={() => handleLinkClick(agency.url, agency.name)}
+            >
+              <div className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors">
+                <div className="p-1 bg-amber-100 text-amber-700 rounded">
+                  {agency.icon}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-sm truncate">
+                      {agency.name}
+                    </span>
+                    <ExternalLink className="h-3 w-3 text-muted-foreground flex-shrink-0" />
+                  </div>
+                  <p className="text-xs text-muted-foreground truncate">
+                    {agency.description}
                   </p>
                 </div>
               </div>

@@ -381,94 +381,265 @@ ${jobDescription}`;
 
   return (
     <div className="space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <MessageSquareIcon className="h-5 w-5 text-primary" />
-            <span>AI Cover Letter Generator</span>
+      <Card className="border-border bg-card">
+        <CardHeader className="pb-4">
+          <CardTitle className="flex items-center gap-3">
+            <div className="p-2.5 bg-muted rounded-xl border border-border">
+              <MessageSquareIcon className="h-6 w-6 text-primary" />
+            </div>
+            <div>
+              <span className="text-xl font-bold text-foreground">
+                AI Cover Letter Generator
+              </span>
+              <p className="text-sm text-muted-foreground font-normal mt-1">
+                Personalized cover letters with company-specific insights
+              </p>
+            </div>
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <div className="space-y-2">
-              <Label htmlFor="resume-text">Your Resume</Label>
-              <Textarea
-                id="resume-text"
-                placeholder="Paste your full resume here..."
-                value={resume}
-                onChange={(e) => setResume(e.target.value)}
-                className="h-48 resize-none"
-              />
+
+        <CardContent className="space-y-6">
+          {/* Main Input Area */}
+          <div className="p-6 bg-muted/20 rounded-lg border-2 border-dashed border-border">
+            <div className="mb-4 text-center">
+              <h3 className="font-semibold text-foreground mb-1">
+                Create Your Cover Letter
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Provide your background and the target position
+              </p>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="job-description">Job Description</Label>
-              <Textarea
-                id="job-description"
-                placeholder="Paste the complete job description here..."
-                value={jobDescription}
-                onChange={(e) => setJobDescription(e.target.value)}
-                className="h-48 resize-none"
-              />
+
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+              <div className="space-y-3">
+                <Label
+                  htmlFor="resume-text"
+                  className="text-sm font-medium flex items-center gap-2"
+                >
+                  <MessageSquareIcon className="h-4 w-4 text-primary" />
+                  Your Resume & Background
+                </Label>
+                <Textarea
+                  id="resume-text"
+                  placeholder="Paste your complete resume including your experience, skills, achievements, and contact information..."
+                  value={resume}
+                  onChange={(e) => setResume(e.target.value)}
+                  className="h-48 resize-none"
+                />
+                <p className="text-xs text-muted-foreground">
+                  Include your full name, contact details, and professional
+                  background
+                </p>
+              </div>
+              <div className="space-y-3">
+                <Label
+                  htmlFor="job-description"
+                  className="text-sm font-medium flex items-center gap-2"
+                >
+                  <SparklesIcon className="h-4 w-4 text-primary" />
+                  Complete Job Description
+                </Label>
+                <Textarea
+                  id="job-description"
+                  placeholder="Paste the full job posting including company name, role details, requirements, and company culture..."
+                  value={jobDescription}
+                  onChange={(e) => setJobDescription(e.target.value)}
+                  className="h-48 resize-none"
+                />
+                <p className="text-xs text-muted-foreground">
+                  AI will analyze company culture and role requirements for
+                  personalization
+                </p>
+              </div>
             </div>
-          </div>{" "}
-          <Button
-            onClick={handleGenerateCoverLetter}
-            disabled={isLoading}
-            className="w-full"
-          >
-            <SparklesIcon className="mr-2 h-4 w-4" />
-            {isLoading
-              ? "Crafting Your Personalized Cover Letter..."
-              : "Generate Cover Letter"}
-          </Button>
-          <p className="text-xs text-muted-foreground text-center">
-            ✨ AI will automatically extract company name, job title, and
-            requirements from the job description
-            <br />
-            Generated cover letter will be professionally formatted and
-            personalized for the role
-            <br />
-            <span className="text-amber-600">
-              ⚠️ Note: Please review and adjust details before sending
-            </span>
-          </p>
+
+            {/* Generate Button */}
+            <Button
+              onClick={handleGenerateCoverLetter}
+              disabled={isLoading || !resume || !jobDescription}
+              className="w-full h-12 mt-6 font-medium text-base"
+            >
+              <SparklesIcon className="mr-3 h-5 w-5" />
+              {isLoading
+                ? "Crafting Your Personalized Cover Letter..."
+                : "Generate Cover Letter"}
+            </Button>
+          </div>
         </CardContent>
       </Card>
 
+      {/* Generated Cover Letter Output - Right Below Generate Button */}
       {generatedCoverLetter && (
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle className="text-lg">Generated Cover Letter</CardTitle>
-            <div className="flex gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleCopyToClipboard}
-              >
-                {hasCopied ? (
-                  <CheckIcon className="mr-2 h-4 w-4" />
-                ) : (
-                  <ClipboardIcon className="mr-2 h-4 w-4" />
-                )}
-                {hasCopied ? "Copied!" : "Copy"}
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleDownloadAsWord}
-              >
-                <DownloadIcon className="mr-2 h-4 w-4" />
-                Download Word
-              </Button>
+        <Card className="border-border bg-card">
+          <CardHeader className="pb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <CardTitle className="text-lg flex items-center gap-2">
+                <CheckIcon className="h-5 w-5 text-primary" />
+                <span className="text-foreground">
+                  Your Personalized Cover Letter
+                </span>
+              </CardTitle>
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleCopyToClipboard}
+                  className="border-border hover:bg-muted"
+                >
+                  {hasCopied ? (
+                    <CheckIcon className="mr-2 h-4 w-4" />
+                  ) : (
+                    <ClipboardIcon className="mr-2 h-4 w-4" />
+                  )}
+                  {hasCopied ? "Copied!" : "Copy Text"}
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleDownloadAsWord}
+                  className="border-border hover:bg-muted"
+                >
+                  <DownloadIcon className="mr-2 h-4 w-4" />
+                  Download Word
+                </Button>
+              </div>
             </div>
           </CardHeader>
           <CardContent>
-            <div className="whitespace-pre-wrap rounded-md bg-muted p-6 font-sans text-sm leading-relaxed border">
-              {generatedCoverLetter}
+            <div className="space-y-6">
+              {/* Cover Letter Preview - Main Output */}
+              <div className="p-6 bg-muted/20 rounded-lg border-2 border-dashed border-border">
+                <div className="mb-4 text-center">
+                  <h3 className="font-semibold text-foreground mb-1">
+                    Generated Cover Letter
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Professional business letter format
+                  </p>
+                </div>
+                <div className="whitespace-pre-wrap bg-background p-6 font-serif text-sm leading-relaxed border rounded-lg max-h-96 overflow-y-auto">
+                  {generatedCoverLetter}
+                </div>
+              </div>
+
+              {/* Action Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-4 bg-card rounded-lg border">
+                  <div className="flex items-start gap-3">
+                    <DownloadIcon className="h-5 w-5 text-primary mt-0.5" />
+                    <div>
+                      <h4 className="font-medium text-foreground mb-1">
+                        Professional Word Export
+                      </h4>
+                      <p className="text-xs text-muted-foreground">
+                        Downloads as formatted .docx file with business letter
+                        layout. Filename includes your name, job title, and
+                        company for easy organization.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-card rounded-lg border">
+                  <div className="flex items-start gap-3">
+                    <MessageSquareIcon className="h-5 w-5 text-primary mt-0.5" />
+                    <div>
+                      <h4 className="font-medium text-foreground mb-1">
+                        Final Review
+                      </h4>
+                      <p className="text-xs text-muted-foreground">
+                        Please review the generated cover letter for accuracy
+                        and personalization. Adjust any details, dates, or
+                        specific requirements before submitting.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>
       )}
+
+      {/* Features & Tips - Moved to Bottom for Less Clutter */}
+      <Card className="border-border bg-card">
+        <CardContent className="pt-6">
+          {/* Key Features */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="p-4 bg-muted/50 rounded-lg border border-border">
+              <div className="flex items-center gap-2 mb-2">
+                <SparklesIcon className="h-5 w-5 text-primary" />
+                <h3 className="font-semibold text-foreground text-sm">
+                  Smart Analysis
+                </h3>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                AI extracts company info and role requirements automatically
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border border-border">
+              <div className="flex items-center gap-2 mb-2">
+                <MessageSquareIcon className="h-5 w-5 text-primary" />
+                <h3 className="font-semibold text-foreground text-sm">
+                  Personalized Content
+                </h3>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Tailored letters highlighting your relevant experience
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border border-border">
+              <div className="flex items-center gap-2 mb-2">
+                <DownloadIcon className="h-5 w-5 text-primary" />
+                <h3 className="font-semibold text-foreground text-sm">
+                  Professional Format
+                </h3>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Business letter format with proper structure and dating
+              </p>
+            </div>
+          </div>
+
+          {/* Help Section */}
+          <div className="p-4 bg-card rounded-lg border">
+            <div className="flex items-start gap-3">
+              <div className="p-1 bg-muted rounded">
+                <SparklesIcon className="h-4 w-4 text-primary" />
+              </div>
+              <div>
+                <h4 className="text-sm font-medium text-foreground mb-2">
+                  How It Works
+                </h4>
+                <ul className="text-xs text-muted-foreground space-y-1">
+                  <li>
+                    • Automatically extracts company name and job title from
+                    description
+                  </li>
+                  <li>
+                    • Creates personalized opening addressing the specific role
+                    and company
+                  </li>
+                  <li>
+                    • Highlights your most relevant experience for the position
+                  </li>
+                  <li>
+                    • Uses current date and professional business letter
+                    formatting
+                  </li>
+                  <li>
+                    • Includes confident closing with clear call-to-action
+                  </li>
+                </ul>
+                <p className="text-xs text-muted-foreground mt-2 font-medium">
+                  💼 Pro tip: Always review and customize the letter before
+                  sending
+                </p>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };
