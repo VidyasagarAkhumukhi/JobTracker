@@ -129,25 +129,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Simplify Your Job Search Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl md:text-5xl font-bold mb-2">10K+</div>
-              <div className="text-blue-100">Jobs Tracked</div>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Make Job Applications
+              <span className="text-yellow-300"> Effortless</span>
+            </h2>
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
+              Transform your job search from complicated chaos to organized
+              success with AI-powered tools
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Target className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Track Jobs Instantly</h3>
+              <p className="text-blue-100 leading-relaxed">
+                Add and organize job applications in seconds. No more scattered
+                spreadsheets.
+              </p>
             </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold mb-2">95%</div>
-              <div className="text-blue-100">Success Rate</div>
+
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold mb-3">AI-Powered Resumes</h3>
+              <p className="text-blue-100 leading-relaxed">
+                Generate tailored resumes in seconds using AI that understands
+                job requirements and optimizes your experience.
+              </p>
             </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold mb-2">2.5x</div>
-              <div className="text-blue-100">Faster Hiring</div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold mb-2">5K+</div>
-              <div className="text-blue-100">Happy Users</div>
+
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Smart Cover Letters</h3>
+              <p className="text-blue-100 leading-relaxed">
+                Create compelling cover letters instantly. AI analyzes job posts
+                and crafts personalized content that stands out.
+              </p>
             </div>
           </div>
         </div>
@@ -159,13 +186,13 @@ export default function Home() {
           <h2 className="text-4xl md:text-6xl font-bold mb-8">
             Ready to{" "}
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Transform
+              Simplify
             </span>{" "}
-            Your Career?
+            Your Job Search?
           </h2>
           <p className="text-xl text-slate-300 mb-12 leading-relaxed">
-            Join thousands of professionals who have accelerated their careers
-            with JobTrackAI
+            Stop juggling spreadsheets and start landing interviews with
+            AI-powered job tracking and application tools
           </p>
           <Button
             asChild
