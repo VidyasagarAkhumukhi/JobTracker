@@ -741,9 +741,6 @@ We welcome contributions to improve JobTracker! Here's how you can help:
 - ⚡ Performance optimizations
 - 🧪 Test coverage expansion
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
