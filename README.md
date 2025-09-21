@@ -4,18 +4,19 @@ A comprehensive, full-stack web application designed to streamline job applicati
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
+- [Overview](#-overview)
 - [🤖 AI Features](#-ai-features)
-- [Features](#features)
+- [Features](#-features)
 - [🎯 Future AI Features](#-future-ai-features)
-- [Technology Stack](#technology-stack)
-- [Architecture](#architecture)
-- [Getting Started](#getting-started)
-- [Usage Guide](#usage-guide)
-- [API Documentation](#api-documentation)
-- [Database Schema](#database-schema)
-- [Contributing](#contributing)
-- [License](#license)
+- [Technology Stack](#️-technology-stack)
+- [Architecture](#️-architecture)
+- [Getting Started](#-getting-started)
+- [Usage Guide](#-usage-guide)
+- [API Documentation](#-api-documentation)
+- [Database Schema](#️-database-schema)
+- [Production Deployment](#-production-deployment)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ## 🎯 Overview
 
