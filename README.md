@@ -742,7 +742,6 @@ We welcome contributions to improve JobTracker! Here's how you can help:
 - ⚡ Performance optimizations
 - 🧪 Test coverage expansion
 
-
 ## 🙏 Acknowledgments
 
 - **Next.js Team** for the excellent React framework

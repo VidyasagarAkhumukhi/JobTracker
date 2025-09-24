@@ -237,6 +237,12 @@ const QuickLinksDropdown = () => {
       description: "Top Irish jobs platform",
     },
     {
+      name: "NineDots",
+      url: "https://ninedots.io/jobs/",
+      icon: <Zap className="h-4 w-4" />,
+      description: "Tech jobs in Ireland",
+    },
+    {
       name: "Indeed Ireland",
       url: "https://ie.indeed.com/",
       icon: <Globe className="h-4 w-4" />,
