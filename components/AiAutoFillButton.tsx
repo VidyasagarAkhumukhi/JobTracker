@@ -46,7 +46,7 @@ const AiAutofillButton = ({ onAutofill }: AiAutofillButtonProps) => {
 
     if (!apiKey) {
       setAutofillError(
-        "API Key is not configured. Please add it to your .env.local file."
+        "API Key is not configured. Please add it to your .env.local file.",
       );
       return;
     }
@@ -59,7 +59,7 @@ const AiAutofillButton = ({ onAutofill }: AiAutofillButtonProps) => {
     setAutofillError("");
 
     try {
-      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`;
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
       const payload = {
         contents: [
@@ -124,11 +124,11 @@ const AiAutofillButton = ({ onAutofill }: AiAutofillButtonProps) => {
       } else {
         if (result.promptFeedback?.blockReason) {
           throw new Error(
-            `Request blocked due to: ${result.promptFeedback.blockReason}`
+            `Request blocked due to: ${result.promptFeedback.blockReason}`,
           );
         }
         throw new Error(
-          "Failed to parse the job description. The API returned an empty response."
+          "Failed to parse the job description. The API returned an empty response.",
         );
       }
     } catch (err) {

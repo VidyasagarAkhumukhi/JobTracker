@@ -67,7 +67,7 @@ const ResumeAIFeature = () => {
         throw new Error("API Key is not configured.");
       }
 
-      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`;
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
       const systemPrompt = `You are an expert career coach and professional resume writer specializing in optimizing resumes for Applicant Tracking Systems (ATS). Your task is to rewrite a user's resume to be perfectly tailored for a specific job description.
 

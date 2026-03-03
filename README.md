@@ -48,9 +48,9 @@ Transform your job application workflow with our cutting-edge AI technology:
   - 💼 **Job Title** - Precise position/role extraction
   - 📍 **Location** - Geographic location detection
 
-#### ⚡ Powered by Google Gemini 2.5 Flash-Lite
+#### ⚡ Powered by Google Gemini 2.5 Flash
 
-- **Advanced Language Model**: Utilizes Google's latest Gemini 2.5 Flash-Lite for superior text understanding and cost efficiency
+- **Advanced Language Model**: Utilizes Google's latest Gemini 2.5 Flash for superior text understanding and cost efficiency
 - **Structured JSON Response**: Ensures reliable and consistent data extraction
 - **Context-Aware Processing**: Understands job posting formats and industry-specific terminology
 
@@ -217,14 +217,14 @@ We're continuously expanding our AI capabilities. Here's what's coming:
 
 ### AI & Backend Technologies
 
-| Technology        | Purpose                                              | Version        |
-| ----------------- | ---------------------------------------------------- | -------------- |
-| **Google Gemini** | AI language model for text processing and generation | 2.5 Flash-Lite |
-| **Google AI SDK** | Official SDK for Gemini API integration              | Latest         |
-| **Officegen**     | Microsoft Office document generation (.docx export)  | Latest         |
-| **Prisma**        | Modern database toolkit and ORM                      | ^6.16.0        |
-| **PostgreSQL**    | Relational database management                       | Latest         |
-| **Clerk**         | Authentication and user management                   | ^6.31.9        |
+| Technology        | Purpose                                              | Version   |
+| ----------------- | ---------------------------------------------------- | --------- |
+| **Google Gemini** | AI language model for text processing and generation | 2.5 Flash |
+| **Google AI SDK** | Official SDK for Gemini API integration              | Latest    |
+| **Officegen**     | Microsoft Office document generation (.docx export)  | Latest    |
+| **Prisma**        | Modern database toolkit and ORM                      | ^6.16.0   |
+| **PostgreSQL**    | Relational database management                       | Latest    |
+| **Clerk**         | Authentication and user management                   | ^6.31.9   |
 
 ### State Management & Data Fetching
 
@@ -286,18 +286,15 @@ jobify/
 ### Data Flow Architecture
 
 1. **Authentication Layer** (Clerk Middleware)
-
    - Route protection and user session management
    - Automatic redirects for unauthenticated users
 
 2. **Client-Side State Management** (TanStack Query)
-
    - Server state caching and synchronization
    - Optimistic updates and error handling
    - Background refetching and cache invalidation
 
 3. **Server Actions** (Next.js)
-
    - Type-safe server-side operations
    - Direct database interactions through Prisma
    - Form submission handling
@@ -386,12 +383,10 @@ Ensure you have the following installed:
 ### Getting Started with JobTracker
 
 1. **Authentication**
-
    - Sign up for a new account or sign in with existing credentials
    - Complete your profile setup
 
 2. **Adding Your First Job Application**
-
    - Navigate to "Add Jobs" from the dashboard
    - **AI Auto-Fill Option**:
      - Paste the full job description in the AI Auto-Fill text area
@@ -408,7 +403,6 @@ Ensure you have the following installed:
    - Click "Create Job" to save
 
 3. **Using AI Auto-Fill Feature**
-
    - **Step 1**: Copy the entire job posting from any job board (LinkedIn, Indeed, company websites, etc.)
    - **Step 2**: Paste it into the "Job Description (Optional AI Autofill)" text area
    - **Step 3**: Click "Autofill from Description"
@@ -426,23 +420,19 @@ Ensure you have the following installed:
 Transform your resume for each job application:
 
 1. **Access Resume AI**
-
    - Click the "AI Magic" button in the job creation form
    - Navigate to the "Resume AI" tab
 
 2. **Paste Your Resume**
-
    - Copy your current resume text
    - Paste it into the "Your Current Resume" text area
    - Include work experience, education, skills, and achievements
 
 3. **Add Job Context**
-
    - Paste the job description in the "Job Description" field
    - This helps AI tailor your resume to the specific role
 
 4. **Generate Optimized Resume**
-
    - Click "Generate AI Resume"
    - AI analyzes the job requirements and optimizes your resume accordingly
    - Features include:
@@ -461,22 +451,18 @@ Transform your resume for each job application:
 Create personalized cover letters in seconds:
 
 1. **Access Cover Letter AI**
-
    - Click the "AI Magic" button in the job creation form
    - Navigate to the "Cover Letter AI" tab
 
 2. **Add Your Information**
-
    - Enter your full name, email, phone, and address
    - Provide your background information and key achievements
 
 3. **Job Description Analysis**
-
    - Paste the complete job description
    - AI automatically extracts company name, role details, and requirements
 
 4. **Generate Cover Letter**
-
    - Click "Generate AI Cover Letter"
    - AI creates a personalized business letter including:
      - ✅ Professional header with your contact information
@@ -499,7 +485,6 @@ Create personalized cover letters in seconds:
 - **Quality Assurance**: AI optimizes for ATS systems while maintaining human readability
 
 4. **Managing Applications**
-
    - View all applications in the "Jobs" section
    - Use the search bar to find specific applications
    - Filter by status using the dropdown menu
@@ -507,7 +492,6 @@ Create personalized cover letters in seconds:
    - Delete applications using the delete button
 
 5. **Tracking Progress**
-
    - Monitor application statuses with color-coded badges:
      - 🟡 **Pending** - Application submitted, awaiting response
      - 🔵 **Applied** - Application confirmed received
@@ -675,7 +659,7 @@ The JobTracker application is fully deployed and operational:
 - **🚀 Platform**: Vercel (Edge Runtime)
 - **🔒 Authentication**: Clerk (Development Mode - Production Ready)
 - **📊 Database**: Prisma Postgres (Cloud)
-- **🤖 AI Service**: Google Gemini 2.5 Flash-Lite (Optimized for Cost)
+- **🤖 AI Service**: Google Gemini 2.5 Flash (Enhanced Performance)
 
 ### Deployment Features
 
@@ -684,7 +668,7 @@ The JobTracker application is fully deployed and operational:
 - ✅ **Real-time Data** - Live database with instant synchronization
 - ✅ **Mobile Responsive** - Optimized for all device sizes
 - ✅ **Secure Authentication** - Protected routes and user data
-- ✅ **Cost-Optimized AI** - Efficient API usage with Flash-Lite model
+- ✅ **High-Performance AI** - Advanced Flash model with superior capabilities
 
 ### Performance Metrics
 
@@ -695,9 +679,9 @@ The JobTracker application is fully deployed and operational:
 
 ### AI Model Configuration
 
-- **Model**: Google Gemini 2.5 Flash-Lite
-- **Cost Optimization**: 30-50% cost reduction vs standard Flash model
-- **Performance**: Same capabilities with improved efficiency
+- **Model**: Google Gemini 2.5 Flash
+- **Performance**: Enhanced capabilities with improved accuracy
+- **Features**: Job parsing, resume optimization, cover letter generation
 - **Features**: Job parsing, resume optimization, cover letter generation
 
 ## 🤝 Contributing

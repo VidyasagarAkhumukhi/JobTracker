@@ -52,7 +52,7 @@ const CoverLetterFeature = () => {
         throw new Error("API Key is not configured.");
       }
 
-      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`;
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
       const systemPrompt = `You are an expert career coach and professional cover letter writer specializing in creating compelling, personalized cover letters that get results.
 
@@ -125,7 +125,7 @@ ${jobDescription}`;
         toast.success("Your personalized cover letter has been generated!");
       } else {
         throw new Error(
-          "Failed to generate the cover letter. The response was empty."
+          "Failed to generate the cover letter. The response was empty.",
         );
       }
     } catch (err: any) {
@@ -252,7 +252,7 @@ ${jobDescription}`;
               ],
               alignment: AlignmentType.RIGHT,
               spacing: { after: 240 },
-            })
+            }),
           );
         }
         // Handle addresses and contact info
@@ -275,7 +275,7 @@ ${jobDescription}`;
                 }),
               ],
               spacing: { after: 120 },
-            })
+            }),
           );
         }
         // Handle names (usually first non-contact line)
@@ -296,7 +296,7 @@ ${jobDescription}`;
                 }),
               ],
               spacing: { after: 120 },
-            })
+            }),
           );
         }
         // Handle salutations
@@ -310,7 +310,7 @@ ${jobDescription}`;
                 }),
               ],
               spacing: { before: 240, after: 120 },
-            })
+            }),
           );
         }
         // Handle closing salutations
@@ -329,7 +329,7 @@ ${jobDescription}`;
                 }),
               ],
               spacing: { before: 240, after: 120 },
-            })
+            }),
           );
         }
         // Regular paragraphs
@@ -344,7 +344,7 @@ ${jobDescription}`;
               ],
               spacing: { after: 240 },
               alignment: AlignmentType.JUSTIFIED,
-            })
+            }),
           );
         }
       }
