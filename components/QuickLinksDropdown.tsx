@@ -500,7 +500,7 @@ const QuickLinksDropdown = () => {
   const handleLinkClick = (
     url: string,
     name: string,
-    event?: React.MouseEvent
+    event?: React.MouseEvent,
   ) => {
     // Prevent the dropdown from closing
     if (event) {
@@ -546,14 +546,12 @@ const QuickLinksDropdown = () => {
         </DropdownMenuLabel>
         <div className="px-1 py-1">
           {irelandJobBoards.map((board) => (
-            <DropdownMenuItem
-              key={board.name}
-              className="p-0"
-              onSelect={(e) => e.preventDefault()}
-            >
-              <div
+            <DropdownMenuItem key={board.name} className="p-0" asChild>
+              <a
+                href={board.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors"
-                onClick={(e) => handleLinkClick(board.url, board.name, e)}
               >
                 <div className="p-1 bg-green-100 text-green-700 rounded">
                   {board.icon}
@@ -569,7 +567,7 @@ const QuickLinksDropdown = () => {
                     {board.description}
                   </p>
                 </div>
-              </div>
+              </a>
             </DropdownMenuItem>
           ))}
         </div>
@@ -582,14 +580,12 @@ const QuickLinksDropdown = () => {
         </DropdownMenuLabel>
         <div className="px-1 py-1">
           {recruitmentAgencies.map((agency) => (
-            <DropdownMenuItem
-              key={agency.name}
-              className="p-0"
-              onSelect={(e) => e.preventDefault()}
-            >
-              <div
+            <DropdownMenuItem key={agency.name} className="p-0" asChild>
+              <a
+                href={agency.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 w-full px-3 py-2 rounded-sm hover:bg-muted cursor-pointer transition-colors"
-                onClick={(e) => handleLinkClick(agency.url, agency.name, e)}
               >
                 <div className="p-1 bg-emerald-100 text-emerald-700 rounded">
                   {agency.icon}
@@ -605,7 +601,7 @@ const QuickLinksDropdown = () => {
                     {agency.description}
                   </p>
                 </div>
-              </div>
+              </a>
             </DropdownMenuItem>
           ))}
         </div>
